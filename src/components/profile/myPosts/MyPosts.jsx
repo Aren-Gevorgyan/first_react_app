@@ -3,7 +3,6 @@ import style from './MyPosts.module.css';
 import Posts from './posts/Posts';
 
 const MyPosts = (props) => {
-    alert(props)
     return(
         <div>  
          <div>
@@ -14,7 +13,8 @@ const MyPosts = (props) => {
            <textarea></textarea>
            <button>Add Posts</button>
          </div>
-         <Posts/>
+         <Posts post = 'My first post' like = '5'/>
+         <Posts post = 'My second post' like = '2'/>
      </div>
      
     )
