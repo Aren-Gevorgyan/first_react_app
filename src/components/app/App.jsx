@@ -17,6 +17,7 @@ function App() {
         <Navbar/>
 
         <div className={style.main_content}>
+          {/* get path */}
           <Route path='/profile'><Profile/></Route>
           <Route path='/dialogs'><Dialogs/></Route>
           <Route path='/news'><News/></Route>

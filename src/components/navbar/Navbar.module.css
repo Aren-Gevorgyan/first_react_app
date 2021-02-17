@@ -5,9 +5,13 @@ nav {
 
 nav ul li {
     margin-top: 5px;
+    list-style-type: none;
+}
+
+nav ul li a {
     font-weight: bold;
     font-size: 12px;
-    list-style-type: none;
+    text-decoration: none;
 }
 
 .item {
