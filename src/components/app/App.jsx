@@ -2,6 +2,7 @@ import style from './App.module.css';
 import Header from '../header/Header';
 import Navbar from '../navbar/Navbar';
 import Profile from '../profile/Profile';
+import Dialogs from '../dialogs/Dialogs';
 
 function App() {
     return ( 
@@ -10,6 +11,7 @@ function App() {
       
         <Header/>
         <Navbar/>
+        {/* <Dialogs/> */}
         <Profile/>
 
       </div>
