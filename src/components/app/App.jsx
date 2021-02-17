@@ -18,11 +18,11 @@ function App() {
 
         <div className={style.main_content}>
           {/* get path */}
-          <Route path='/profile'><Profile/></Route>
-          <Route path='/dialogs'><Dialogs/></Route>
-          <Route path='/news'><News/></Route>
-          <Route path='/music'><Music/></Route>
-          <Route path='/settings'><Settings/></Route>
+          <Route exact path='/profile'><Profile/></Route>
+          <Route exact path='/dialogs'><Dialogs/></Route>
+          <Route exact path='/news'><News/></Route>
+          <Route exact path='/music'><Music/></Route>
+          <Route exact path='/settings'><Settings/></Route>
         </div>
 
       </div>

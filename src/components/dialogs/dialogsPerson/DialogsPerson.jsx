@@ -13,6 +13,7 @@ const DialogsPerson = () => {
                 <li><NavLink to='/dialogs/Robert' activeClassName={style.active}>Robert</NavLink></li>
                 <li><NavLink to='/dialogs/Meri' activeClassName={style.active}>Meri</NavLink></li>
                 <li><NavLink to='/dialogs/Asiya' activeClassName={style.active}>Asiya</NavLink></li>
+                
             </ul>
         </div>
     )
