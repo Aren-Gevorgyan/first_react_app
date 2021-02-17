@@ -1,19 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import DialogsItem from './dialogsItem/DialogsItem';
 import style from './DialogsPerson.module.css';
 
-const DialogsPerson = () => {
+const DialogsPerson = (props) => {
     return (
         <div className={style.container}>
             <ul>
-               
-                <li><NavLink to='/dialogs/Armen' activeClassName={style.active}>Armen</NavLink></li>
-                <li><NavLink to='/dialogs/Nazeli' activeClassName={style.active}>Nazeli</NavLink></li>
-                <li><NavLink to='/dialogs/Artur' activeClassName={style.active}>Artur</NavLink></li>
-                <li><NavLink to='/dialogs/Robert' activeClassName={style.active}>Robert</NavLink></li>
-                <li><NavLink to='/dialogs/Meri' activeClassName={style.active}>Meri</NavLink></li>
-                <li><NavLink to='/dialogs/Asiya' activeClassName={style.active}>Asiya</NavLink></li>
-                
+              <DialogsItem name='Armen' id = '1'/>
+              <DialogsItem name='Hovo' id = '2'/>
+              <DialogsItem name='Dima' id = '3'/>
+              <DialogsItem name='Aren' id = '4'/>
+              <DialogsItem name='Arman' id = '5'/>
             </ul>
         </div>
     )

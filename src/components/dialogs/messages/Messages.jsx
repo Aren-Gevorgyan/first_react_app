@@ -1,13 +1,14 @@
 import React from 'react';
 import style from './Messages.module.css';
+import MessagesItem from './messagesItem/MessagesItem';
 
-const Messages = () => {
+const Messages = (props) => {
     return (
         <div className={style.container}>
             <ul>
-                <li>hi</li>
-                <li>are you  programer?</li>
-                <li>?</li>
+                <MessagesItem message = "Hi" />
+                <MessagesItem message = "are you  programer?" />
+                <MessagesItem message = "?" />
             </ul>
         </div>
     )

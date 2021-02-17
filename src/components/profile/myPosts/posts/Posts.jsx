@@ -3,18 +3,22 @@ import style from './Posts.module.css';
 
 const Post = (props) => {
     return(
-        <div>
+        <div className={style.container}>
 
-           <img className={style.avatar} src='https://st3.depositphotos.com/12985848/16098/i/600/depositphotos_160982490-stock-photo-confident-businesswoman-in-formal-wear.jpg'
-            alt='post photo'/> 
+           <div className={style.post}>
 
-           {props.post}
+             <img className={style.avatar} src='https://st3.depositphotos.com/12985848/16098/i/600/depositphotos_160982490-stock-photo-confident-businesswoman-in-formal-wear.jpg'
+               alt='post photo'/> 
+
+              {props.post}
+              
+           </div>
 
            <div>
                <span className={style.like}>like {props.like}</span>
            </div>
 
-         </div>
+        </div>
     )
 }
 

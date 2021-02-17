@@ -2,13 +2,3 @@
     flex: 1;
     border-right: 1px solid gray;
 }
-
-.container ul li a {
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.active {
-    color: gray;
-}

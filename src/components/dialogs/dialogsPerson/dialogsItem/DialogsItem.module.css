@@ -1,0 +1,13 @@
+.container li a {
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.container li {
+    margin: 5px;
+}
+
+.active {
+    color: gray;
+}
