@@ -4,10 +4,11 @@ import DialogsPerson from './dialogsPerson/DialogsPerson';
 import Messages from './messages/Messages';
 
 const Dialogs = (props) => {
+
     return(
         <div className={style.container}>
-          <DialogsPerson/>
-          <Messages/>
+          <DialogsPerson person={props.dialogsPerson}/>
+          <Messages messages={props.messages}/>
         </div>
     )
 }

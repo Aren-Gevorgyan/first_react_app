@@ -4,14 +4,17 @@ import Posts from './posts/Posts';
 import AppendPost from './appendPost/AppendPost';
 
 const MyPosts = (props) => {
+
+    let post = props.props
+    .map(element =>  <Posts post={element.post} like={element.like}/>)
+    
     return(
         <div>
 
           <AppendPost/>
 
-          <Posts post = 'My first post' like = '5'/>
-          <Posts post = 'My second post' like = '2'/>
-          
+          {post}
+
         </div>
      
     )

@@ -3,13 +3,14 @@ import style from './Profile.module.css';
 import MyPosts from './myPosts/MyPosts';
 import DescriptionPerson from './descriptionPerson/DescriptionPerson';
 
-const Profile = ()=>{
+const Profile = (props)=>{
+   
    return( 
 
      <div className={style.container}>
   
         <DescriptionPerson/> 
-        <MyPosts/>
+        <MyPosts props={props.posts}/>
 
      </div> 
 

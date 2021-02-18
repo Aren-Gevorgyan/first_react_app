@@ -16,6 +16,8 @@
 
 .createNewPost textarea {
     height: 20px;
+    font-size: 8px;
+    outline: none;
 }
 
 .createNewPost button:hover {

@@ -3,14 +3,14 @@ import DialogsItem from './dialogsItem/DialogsItem';
 import style from './DialogsPerson.module.css';
 
 const DialogsPerson = (props) => {
+
+    let dialogsItem = props.person
+    .map(element => <DialogsItem name={element.name} id={element.id}/>)
+
     return (
         <div className={style.container}>
             <ul>
-              <DialogsItem name='Armen' id = '1'/>
-              <DialogsItem name='Hovo' id = '2'/>
-              <DialogsItem name='Dima' id = '3'/>
-              <DialogsItem name='Aren' id = '4'/>
-              <DialogsItem name='Arman' id = '5'/>
+              {dialogsItem}
             </ul>
         </div>
     )

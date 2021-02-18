@@ -8,7 +8,8 @@ import Music from '../music/Music';
 import Settings from '../settings/Settings';
 import { Route } from 'react-router-dom';
 
-function App() {
+function App(props) {
+
     return ( 
 
       <div className={style.container}>
@@ -17,8 +18,8 @@ function App() {
         <Navbar/>
 
         <div className={style.main_content}>
-          <Route path='/profile'><Profile/></Route>
-          <Route path='/dialogs'><Dialogs/></Route>
+          <Route path='/profile'><Profile posts={props.posts}/></Route>
+          <Route path='/dialogs'><Dialogs dialogsPerson={props.dialogsPerson} messages={props.messages}/></Route>
           <Route path='/news'><News/></Route>
           <Route path='/music'><Music/></Route>
           <Route path='/settings'><Settings/></Route>
