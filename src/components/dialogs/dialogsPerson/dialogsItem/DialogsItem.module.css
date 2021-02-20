@@ -6,6 +6,18 @@
 
 .container li {
     margin: 5px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 2px 0 2px;
+}
+
+.container li img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin: 0 2% 0 2%;
 }
 
 .active {

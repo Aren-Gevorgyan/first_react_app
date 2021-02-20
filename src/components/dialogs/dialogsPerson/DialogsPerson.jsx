@@ -5,7 +5,7 @@ import style from './DialogsPerson.module.css';
 const DialogsPerson = (props) => {
 
     let dialogsItem = props.person
-    .map(element => <DialogsItem name={element.name} id={element.id}/>)
+    .map(element => <DialogsItem name={element.name} id={element.id} photo={element.photo}/>)
 
     return (
         <div className={style.container}>

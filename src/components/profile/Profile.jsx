@@ -10,7 +10,7 @@ const Profile = (props)=>{
      <div className={style.container}>
   
         <DescriptionPerson/> 
-        <MyPosts props={props.posts}/>
+        <MyPosts props={props.state.arrayPosts}/>
 
      </div> 
 

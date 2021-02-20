@@ -4,10 +4,10 @@ let arrayPosts = [
     { post: 'My third post', like: 7 },
 ]
 let arrayPerson = [
-    { id: 1, name: 'Armen' },
-    { id: 2, name: 'Arman' },
-    { id: 3, name: 'Karmen' },
-    { id: 4, name: 'Aren' },
+    { id: 1, name: 'Armen', photo: 'https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg' },
+    { id: 2, name: 'Arman', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBT5gubg-W3PkfaYaEWF-RaAYaygABWYscJQ&usqp=CAU' },
+    { id: 3, name: 'Karmen', photo: 'https://img2.goodfon.ru/wallpaper/nbig/c/cf/vysota-gora-zakat-priroda.jpg' },
+    { id: 4, name: 'Aren', photo: 'https://img5.goodfon.ru/wallpaper/nbig/8/af/zakat-gory-chelovek.jpg' },
 ];
 
 let arrayMessages = [
@@ -17,12 +17,17 @@ let arrayMessages = [
 ];
 
 const state = {
-    profilePage: arrayPosts,
+
+    profilePage: {
+        arrayPosts
+    },
+
     dialogPage: {
         arrayPerson,
         arrayMessages
     },
-    navbar: ,
+
+    navbar: [],
 }
 
 export default state;
