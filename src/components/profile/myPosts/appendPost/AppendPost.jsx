@@ -2,6 +2,13 @@ import React from 'react';
 import style from './AppendPost.module.css';
 
 const AppendPosts = (props) => {
+
+    let currentValuePost = React.createRef();
+
+    const setPost = () => {
+          let value = currentValuePost.current.value;
+    }
+
     return(
         <div className={style.container}>  
 
@@ -10,9 +17,9 @@ const AppendPosts = (props) => {
            </div>
 
            <div className={style.createNewPost}>
-               <textarea></textarea>
+               <textarea ref={currentValuePost}></textarea>
                <br/>
-               <button>Add Posts</button>
+               <button onClick={setPost}>Add Posts</button>
             </div>
 
         </div>
