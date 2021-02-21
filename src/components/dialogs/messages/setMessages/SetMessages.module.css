@@ -1,0 +1,23 @@
+.container {
+    margin: 10px 7%;
+}
+
+.container textarea {
+    width: 30%;
+    height: 14px;
+    display: block;
+    outline: none;
+    font-size: 8px;
+}
+
+.container button {
+    font-size: 8px;
+    height: 16px;
+}
+
+.container button:hover {
+    outline: none;
+    border: none;
+    background-color: gray;
+    color: white;
+}

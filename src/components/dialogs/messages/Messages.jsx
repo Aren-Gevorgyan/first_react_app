@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Messages.module.css';
 import MessagesItem from './messagesItem/MessagesItem';
+import SetMessages from './setMessages/SetMessages';
 
 const Messages = (props) => {
 
@@ -12,6 +13,7 @@ const Messages = (props) => {
             <ul>
                {messages}
             </ul>
+            <SetMessages/>
         </div>
     )
 }
