@@ -7,8 +7,12 @@ const Dialogs = (props) => {
 
     return(
         <div className={style.container}>
-          <DialogsPerson person={props.state.arrayPerson}/>
-          <Messages messages={props.state.arrayMessages} setMessage={props.setMessage}/>
+          <DialogsPerson person={props.dialogPage.arrayPerson}/>
+          <Messages
+            messages={props.dialogPage.arrayMessages}
+            setMessage={props.setMessage}
+            setNewMessageText={props.setNewMessageText}
+            newMessageText={props.dialogPage.newMessageText}/>
         </div>
     )
 }

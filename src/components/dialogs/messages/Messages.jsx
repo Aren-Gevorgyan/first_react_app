@@ -7,13 +7,16 @@ const Messages = (props) => {
 
     let messages = props.messages
     .map(element => <MessagesItem message={element.message} id={element.id}/>) 
-
+console.log(props);
     return (
         <div className={style.container}>
             <ul>
                {messages}
             </ul>
-            <SetMessages setMessage={props.setMessage}/>
+            <SetMessages
+              setMessage={props.setMessage}
+              setNewMessageText={props.setNewMessageText}
+              newMessageText={props.newMessageText}/>
         </div>
     )
 }

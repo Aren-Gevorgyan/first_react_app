@@ -9,7 +9,6 @@ import Settings from '../settings/Settings';
 import { Route } from 'react-router-dom';
 
 function App(props) {
-
     return ( 
 
       <div className={style.container}>
@@ -26,7 +25,13 @@ function App(props) {
              setNewPostText={props.setNewPostText}/>
           </Route>
           
-          <Route path='/dialogs'><Dialogs state={props.state.dialogPage} setMessage={props.setMessage}/></Route>
+          <Route path='/dialogs'>
+            <Dialogs
+             dialogPage={props.state.dialogPage}
+             setMessage={props.setMessage}
+             setNewMessageText={props.setNewMessageText}/>
+          </Route>
+
           <Route path='/news'><News/></Route>
           <Route path='/music'><Music/></Route>
           <Route path='/settings'><Settings/></Route>

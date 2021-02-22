@@ -5,7 +5,7 @@ import App from '../components/app/App';
 import reportWebVitals from '../reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-const renderApp = (state, setPost, setMessage, setNewPostText) => {
+const renderApp = (state, setPost, setMessage, setNewPostText, setNewMessageText) => {
 
     ReactDOM.render( < React.StrictMode > { /* bind url */ } <
         BrowserRouter >
@@ -14,6 +14,7 @@ const renderApp = (state, setPost, setMessage, setNewPostText) => {
         setPost = { setPost }
         setMessage = { setMessage }
         setNewPostText = { setNewPostText }
+        setNewMessageText = { setNewMessageText }
         /> <
         /BrowserRouter >  <
         /React.StrictMode>,

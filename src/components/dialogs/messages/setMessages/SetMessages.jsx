@@ -3,17 +3,21 @@ import style from './SetMessages.module.css';
 
 const SetMessages = (props) => {
 
-    const bindMessage = React.createRef();
+    const bindTextarea = React.createRef();
 
     const getValueMessage = () => {
-        let value = bindMessage.current.value;
-        props.setMessage(value);
-        bindMessage.current.value = "";
+        props.setMessage();
     }
 
+    const getPresentValue = () => {
+        let value = bindTextarea.current.value;
+        props.setNewMessageText(value);
+    }
+    console.log(props.newMessageText)
+    
     return(
         <div className={style.container}>
-           <textarea ref={bindMessage}></textarea>
+           <textarea onChange={getPresentValue} ref={bindTextarea} value={props.newMessageText}/>
            <button onClick={getValueMessage}>Add Messages</button>    
         </div>
     )

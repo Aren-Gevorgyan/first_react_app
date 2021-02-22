@@ -27,7 +27,8 @@ const state = {
 
     dialogPage: {
         arrayPerson,
-        arrayMessages
+        arrayMessages,
+        newMessageText: "",
     },
 
     navbar: [],
@@ -42,24 +43,29 @@ export const setPost = () => {
     }
     arrayPosts.push(newPost);
     state.profilePage.newPostText = "";
-    renderApp(state, setPost, setMessage, setNewPostText);
+    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
 }
 
 export const setNewPostText = (value) => {
     state.profilePage.newPostText = value;
-    renderApp(state, setPost, setMessage, setNewPostText);
+    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
 }
 
-export const setMessage = (value) => {
+export const setMessage = () => {
 
     let newMessage = {
         id: 4,
-        message: value,
+        message: state.dialogPage.newMessageText,
     }
 
     arrayMessages.push(newMessage);
-    renderApp(state, setPost, setMessage, setNewPostText);
+    state.dialogPage.newMessageText = "";
+    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
+}
 
+export const setNewMessageText = (value) => {
+    state.dialogPage.newMessageText = value;
+    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
 }
 
 export default state;
