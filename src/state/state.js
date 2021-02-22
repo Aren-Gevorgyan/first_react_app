@@ -1,3 +1,5 @@
+import renderApp from '../render/render';
+
 let arrayPosts = [
     { id: 1, post: 'My first post', like: 5 },
     { id: 2, post: 'My second post', like: 2 },
@@ -32,23 +34,25 @@ const state = {
 
 
 export const setPost = (value) => {
-    alert(value);
-
     let newPost = {
         id: 4,
         post: value,
         like: 0
     }
     arrayPosts.push(newPost);
+    renderApp(state, setPost, setMessage);
 }
 
 export const setMessage = (value) => {
+
     let newMessage = {
         id: 4,
         message: value,
     }
 
     arrayMessages.push(newMessage);
+    renderApp(state, setPost, setMessage);
+
 }
 
 export default state;
