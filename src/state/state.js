@@ -1,7 +1,7 @@
 let arrayPosts = [
-    { post: 'My first post', like: 5 },
-    { post: 'My second post', like: 2 },
-    { post: 'My third post', like: 7 },
+    { id: 1, post: 'My first post', like: 5 },
+    { id: 2, post: 'My second post', like: 2 },
+    { id: 3, post: 'My third post', like: 7 },
 ]
 let arrayPerson = [
     { id: 1, name: 'Armen', photo: 'https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg' },
@@ -32,13 +32,23 @@ const state = {
 
 
 export const setPost = (value) => {
-    console.log(value);
+    alert(value);
+
     let newPost = {
         id: 4,
         post: value,
         like: 0
     }
     arrayPosts.push(newPost);
+}
+
+export const setMessage = (value) => {
+    let newMessage = {
+        id: 4,
+        message: value,
+    }
+
+    arrayMessages.push(newMessage);
 }
 
 export default state;

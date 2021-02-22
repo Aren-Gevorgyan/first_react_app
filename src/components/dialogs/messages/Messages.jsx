@@ -13,7 +13,7 @@ const Messages = (props) => {
             <ul>
                {messages}
             </ul>
-            <SetMessages/>
+            <SetMessages setMessage={props.setMessage}/>
         </div>
     )
 }

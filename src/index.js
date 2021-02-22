@@ -4,7 +4,7 @@ import style from './index.module.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import state, { setPost } from './state/state';
+import state, { setPost, setMessage } from './state/state';
 
 ReactDOM.render( < React.StrictMode >
 
@@ -13,6 +13,7 @@ ReactDOM.render( < React.StrictMode >
     <
     App state = { state }
     setPost = { setPost }
+    setMessage = { setMessage }
     /> <
     /BrowserRouter >  <
     /React.StrictMode>,

@@ -7,7 +7,8 @@ const SetMessages = (props) => {
 
     const getValueMessage = () => {
         let value = bindMessage.current.value;
-        alert(value);
+        props.setMessage(value);
+        bindMessage.current.value = "";
     }
 
     return(
