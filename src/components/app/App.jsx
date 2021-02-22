@@ -18,7 +18,14 @@ function App(props) {
         <Navbar/>
 
         <div className={style.main_content}>
-          <Route path='/profile'><Profile profilePage={props.state.profilePage} setPost={props.setPost}/></Route>
+
+          <Route path='/profile'>
+            <Profile
+             profilePage={props.state.profilePage} 
+             setPost={props.setPost} 
+             setNewPostText={props.setNewPostText}/>
+          </Route>
+          
           <Route path='/dialogs'><Dialogs state={props.state.dialogPage} setMessage={props.setMessage}/></Route>
           <Route path='/news'><News/></Route>
           <Route path='/music'><Music/></Route>

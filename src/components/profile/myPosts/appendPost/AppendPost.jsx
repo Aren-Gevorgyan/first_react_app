@@ -6,9 +6,12 @@ const AppendPosts = (props) => {
     let bindTextarea = React.createRef();
 
     const setPost = () => {
-          let value = bindTextarea.current.value;
-          props.setPost(value);
-          bindTextarea.current.value = "";
+          props.setPost();
+    }
+
+    const getPresentValue = () => {
+        let value = bindTextarea.current.value;
+        props.setNewPostText(value);
     }
 
     return(
@@ -19,13 +22,12 @@ const AppendPosts = (props) => {
            </div>
 
            <div className={style.createNewPost}>
-               <textarea ref={bindTextarea}></textarea>
+               <textarea onChange={getPresentValue} ref={bindTextarea} value={props.newPostText}/>
                <br/>
                <button onClick={setPost}>Add Posts</button>
             </div>
 
-        </div>
-     
+        </div>   
     )
 }
 

@@ -22,6 +22,7 @@ const state = {
 
     profilePage: {
         arrayPosts,
+        newPostText: "",
     },
 
     dialogPage: {
@@ -33,14 +34,20 @@ const state = {
 }
 
 
-export const setPost = (value) => {
+export const setPost = () => {
     let newPost = {
         id: 4,
-        post: value,
+        post: state.profilePage.newPostText,
         like: 0
     }
     arrayPosts.push(newPost);
-    renderApp(state, setPost, setMessage);
+    state.profilePage.newPostText = "";
+    renderApp(state, setPost, setMessage, setNewPostText);
+}
+
+export const setNewPostText = (value) => {
+    state.profilePage.newPostText = value;
+    renderApp(state, setPost, setMessage, setNewPostText);
 }
 
 export const setMessage = (value) => {
@@ -51,7 +58,7 @@ export const setMessage = (value) => {
     }
 
     arrayMessages.push(newMessage);
-    renderApp(state, setPost, setMessage);
+    renderApp(state, setPost, setMessage, setNewPostText);
 
 }
 
