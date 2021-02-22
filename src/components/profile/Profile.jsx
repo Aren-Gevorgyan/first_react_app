@@ -4,13 +4,12 @@ import MyPosts from './myPosts/MyPosts';
 import DescriptionPerson from './descriptionPerson/DescriptionPerson';
 
 const Profile = (props)=>{
-   
    return( 
 
      <div className={style.container}>
   
         <DescriptionPerson/> 
-        <MyPosts props={props.state.arrayPosts}/>
+        <MyPosts state={props.profilePage} setPost={props.setPost}/>
 
      </div> 
 

@@ -3,10 +3,12 @@ import style from './AppendPost.module.css';
 
 const AppendPosts = (props) => {
 
-    let currentValuePost = React.createRef();
+    let bindTextarea = React.createRef();
 
     const setPost = () => {
-          let value = currentValuePost.current.value;
+          let value = bindTextarea.current.value;
+          props.setPost(value);
+          bindTextarea.current.value = "";
     }
 
     return(
@@ -17,7 +19,7 @@ const AppendPosts = (props) => {
            </div>
 
            <div className={style.createNewPost}>
-               <textarea ref={currentValuePost}></textarea>
+               <textarea ref={bindTextarea}></textarea>
                <br/>
                <button onClick={setPost}>Add Posts</button>
             </div>

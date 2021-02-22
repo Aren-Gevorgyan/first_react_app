@@ -19,7 +19,7 @@ let arrayMessages = [
 const state = {
 
     profilePage: {
-        arrayPosts
+        arrayPosts,
     },
 
     dialogPage: {
@@ -28,6 +28,17 @@ const state = {
     },
 
     navbar: [],
+}
+
+
+export const setPost = (value) => {
+    console.log(value);
+    let newPost = {
+        id: 4,
+        post: value,
+        like: 0
+    }
+    arrayPosts.push(newPost);
 }
 
 export default state;

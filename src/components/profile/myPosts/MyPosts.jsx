@@ -5,13 +5,13 @@ import AppendPost from './appendPost/AppendPost';
 
 const MyPosts = (props) => {
 
-    let post = props.props
+    let post = props.state.arrayPosts
     .map(element =>  <Posts post={element.post} like={element.like}/>)
     
     return(
         <div>
 
-          <AppendPost/>
+          <AppendPost setPost={props.setPost}/>
 
           {post}
 
