@@ -1,14 +1,10 @@
-// import renderApp from "./render/render";
-import state, { setPost, setMessage, setNewPostText, setNewMessageText, subscribe } from './state/state';
-
-// renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import style from './index.module.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import state, { setPost, setMessage, setNewPostText, setNewMessageText, subscribe } from './state/state';
 
 const renderApp = () => {
 
@@ -26,6 +22,7 @@ const renderApp = () => {
         document.getElementById('root')
     );
 }
+
 renderApp();
 subscribe(renderApp);
 
