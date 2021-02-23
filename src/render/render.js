@@ -7,17 +7,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 const renderApp = (state, setPost, setMessage, setNewPostText, setNewMessageText) => {
 
-    ReactDOM.render( < React.StrictMode > { /* bind url */ } <
-        BrowserRouter >
-        <
-        App state = { state }
-        setPost = { setPost }
-        setMessage = { setMessage }
-        setNewPostText = { setNewPostText }
-        setNewMessageText = { setNewMessageText }
-        /> <
-        /BrowserRouter >  <
-        /React.StrictMode>,
+    ReactDOM.render( <React.StrictMode >
+        { /* bind url */ }
+        <BrowserRouter >
+        <App 
+          state={ state } 
+          setPost={setPost} 
+          setMessage={setMessage} 
+          setNewPostText={setNewPostText}
+          setNewMessageText={setNewMessageText}/>
+        </BrowserRouter > 
+        </React.StrictMode>,
         document.getElementById('root')
     );
 }

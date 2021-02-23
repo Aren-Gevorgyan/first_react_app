@@ -1,4 +1,4 @@
-import renderApp from '../render/render';
+let renderApp;
 
 let arrayPosts = [
     { id: 1, post: 'My first post', like: 5 },
@@ -43,12 +43,12 @@ export const setPost = () => {
     }
     arrayPosts.push(newPost);
     state.profilePage.newPostText = "";
-    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
+    renderApp();
 }
 
 export const setNewPostText = (value) => {
     state.profilePage.newPostText = value;
-    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
+    renderApp();
 }
 
 export const setMessage = () => {
@@ -60,12 +60,16 @@ export const setMessage = () => {
 
     arrayMessages.push(newMessage);
     state.dialogPage.newMessageText = "";
-    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
+    renderApp();
 }
 
 export const setNewMessageText = (value) => {
     state.dialogPage.newMessageText = value;
-    renderApp(state, setPost, setMessage, setNewPostText, setNewMessageText);
+    renderApp();
+}
+
+export const subscribe = (observer) => {
+    renderApp = observer;
 }
 
 export default state;
