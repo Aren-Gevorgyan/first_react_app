@@ -4,18 +4,14 @@ import style from './index.module.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import state, { setPost, setMessage, setNewPostText, setNewMessageText, subscribe } from './state/state';
+import store from './store/store';
 
 const renderApp = () => {
 
     ReactDOM.render( < React.StrictMode > { /* bind url */ } <
         BrowserRouter >
         <
-        App state = { state }
-        setPost = { setPost }
-        setMessage = { setMessage }
-        setNewPostText = { setNewPostText }
-        setNewMessageText = { setNewMessageText }
+        App store = { store }
         /> <
         /BrowserRouter >  <
         /React.StrictMode>,
@@ -24,7 +20,6 @@ const renderApp = () => {
 }
 
 renderApp();
-subscribe(renderApp);
-
+store.subscribe = renderApp;
 
 reportWebVitals();

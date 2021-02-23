@@ -20,16 +20,16 @@ function App(props) {
 
           <Route path='/profile'>
             <Profile
-             profilePage={props.state.profilePage} 
-             setPost={props.setPost} 
-             setNewPostText={props.setNewPostText}/>
+             profilePage={props.store.state.profilePage} 
+             setPost={props.store.setPost.bind(props.store)} 
+             setNewPostText={props.store.setNewPostText.bind(props.store)}/>
           </Route>
           
           <Route path='/dialogs'>
             <Dialogs
-             dialogPage={props.state.dialogPage}
-             setMessage={props.setMessage}
-             setNewMessageText={props.setNewMessageText}/>
+             dialogPage={props.store.state.dialogPage}
+             setMessage={props.store.setMessage.bind(props.store)}
+             setNewMessageText={props.store.setNewMessageText.bind(props.store)}/>
           </Route>
 
           <Route path='/news'><News/></Route>
