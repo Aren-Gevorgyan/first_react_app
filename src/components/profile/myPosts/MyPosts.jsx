@@ -12,8 +12,8 @@ const MyPosts = (props) => {
         <div>
 
           <AppendPost 
-          setPost={props.setPost} 
-          setNewPostText={props.setNewPostText} 
+          
+          dispatch={props.dispatch}
           newPostText={props.newPostText}/>
 
           {post}

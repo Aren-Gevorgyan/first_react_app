@@ -40,7 +40,24 @@ const store = {
         this._subscribe = render;
     },
 
-    setPost() {
+    dispatch(action) {
+        switch (action.type) {
+            case "ADD-POST":
+                this._addPost();
+                break;
+            case "SET-NEW-POST-TEXT":
+                this._setNewPostText(action.newText);
+                break;
+            case "ADD-MESSAGES":
+                this._addMessage();
+                break;
+            case "SET-NEW-MESSAGES-TEXT":
+                this._setNewMessageText(action.newText);
+                break;
+        }
+    },
+
+    _addPost() {
         let newPost = {
             id: 4,
             post: this._state.profilePage.newPostText,
@@ -51,12 +68,13 @@ const store = {
         this._subscribe();
     },
 
-    setNewPostText(value) {
-        this._state.profilePage.newPostText = value;
+    _setNewPostText(text) {
+        console.log(text);
+        this._state.profilePage.newPostText = text;
         this._subscribe();
     },
 
-    setMessage() {
+    _addMessage() {
 
         let newMessage = {
             id: 4,
@@ -68,8 +86,8 @@ const store = {
         this._subscribe();
     },
 
-    setNewMessageText(value) {
-        this._state.dialogPage.newMessageText = value;
+    _setNewMessageText(text) {
+        this._state.dialogPage.newMessageText = text;
         this._subscribe();
     },
 }

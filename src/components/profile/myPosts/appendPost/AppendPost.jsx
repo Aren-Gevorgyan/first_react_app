@@ -6,12 +6,12 @@ const AppendPosts = (props) => {
     let bindTextarea = React.createRef();
 
     const setPost = () => {
-          props.setPost();
+          props.dispatch({type:"ADD-POST"});
     }
 
     const getPresentValue = () => {
-        let value = bindTextarea.current.value;
-        props.setNewPostText(value);
+        let newText = bindTextarea.current.value;
+        props.dispatch({type:"SET-NEW-POST-TEXT", newText})
     }
 
     return(

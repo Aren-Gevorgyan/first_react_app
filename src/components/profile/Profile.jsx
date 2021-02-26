@@ -4,7 +4,7 @@ import MyPosts from './myPosts/MyPosts';
 import DescriptionPerson from './descriptionPerson/DescriptionPerson';
 
 const Profile = (props)=>{
-
+   
    return( 
 
      <div className={style.container}>
@@ -13,8 +13,7 @@ const Profile = (props)=>{
         <MyPosts 
         arrayPosts={props.profilePage.arrayPosts}
         newPostText={props.profilePage.newPostText}
-        setPost={props.setPost} 
-        setNewPostText={props.setNewPostText}/>
+        dispatch={props.dispatch}/>
 
      </div> 
 

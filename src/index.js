@@ -13,7 +13,7 @@ const renderApp = () => {
         <
         App store = { store }
         /> <
-        /BrowserRouter >  <
+        /BrowserRouter > <
         /React.StrictMode>,
         document.getElementById('root')
     );

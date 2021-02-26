@@ -21,15 +21,13 @@ function App(props) {
           <Route path='/profile'>
             <Profile
              profilePage={props.store.state.profilePage} 
-             setPost={props.store.setPost.bind(props.store)} 
-             setNewPostText={props.store.setNewPostText.bind(props.store)}/>
+             dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>
           
           <Route path='/dialogs'>
             <Dialogs
              dialogPage={props.store.state.dialogPage}
-             setMessage={props.store.setMessage.bind(props.store)}
-             setNewMessageText={props.store.setNewMessageText.bind(props.store)}/>
+             dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>
 
           <Route path='/news'><News/></Route>
