@@ -1,7 +1,6 @@
-const ADD_POST = "ADD_POST";
-const SET_NEW_POST_TEXT = "SET_NEW_POST_TEXT";
-const ADD_MESSAGES = "ADD_MESSAGES";
-const SET_NEW_MESSAGES_TEXT = "SET_NEW_MESSAGES_TEXT";
+import profileReduce from './reduce/profileReduce';
+import dialogReduce from './reduce/dialogReduce';
+import navbarReduce from './reduce/navbarReduce';
 
 const store = {
 
@@ -46,60 +45,11 @@ const store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost();
-                break;
-            case SET_NEW_POST_TEXT:
-                this._setNewPostText(action.newText);
-                break;
-            case ADD_MESSAGES:
-                this._addMessage();
-                break;
-            case SET_NEW_MESSAGES_TEXT:
-                this._setNewMessageText(action.newText);
-                break;
-        }
-    },
-
-    _addPost() {
-        let newPost = {
-            id: 4,
-            post: this._state.profilePage.newPostText,
-            like: 0
-        }
-        this._state.profilePage.arrayPosts.push(newPost);
-        this._state.profilePage.newPostText = "";
+        this._state.profilePage = profileReduce(this._state.profilePage, action);
+        this._state.dialogPage = dialogReduce(this._state.dialogPage, action);
+        this._state.navbar = navbarReduce(this._state.navbar, action);
         this._subscribe();
-    },
-
-    _setNewPostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._subscribe();
-    },
-
-    _addMessage() {
-
-        let newMessage = {
-            id: 4,
-            message: this._state.dialogPage.newMessageText,
-        }
-
-        this._state.dialogPage.arrayMessages.push(newMessage);
-        this._state.dialogPage.newMessageText = "";
-        this._subscribe();
-    },
-
-    _setNewMessageText(text) {
-        this._state.dialogPage.newMessageText = text;
-        this._subscribe();
-    },
+    }
 }
-
-
-export const createActionAddPost = () => ({ type: ADD_POST });
-export const createActionSetPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
-export const createActionAddMessages = () => ({ type: ADD_MESSAGES });
-export const createActionSetMessagesText = (newText) => ({ type: SET_NEW_MESSAGES_TEXT, newText });
 
 export default store;

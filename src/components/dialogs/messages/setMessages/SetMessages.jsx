@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './SetMessages.module.css';
-import {createActionAddMessages, createActionSetMessagesText} from "../../../../store/store";
+import {createActionAddMessages, createActionSetMessagesText} from "../../../../store/reduce/dialogReduce";
 
 const SetMessages = (props) => {
 
