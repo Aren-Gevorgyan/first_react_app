@@ -13,11 +13,3 @@ nav ul li a {
     font-size: 12px;
     text-decoration: none;
 }
-
-.item {
-    color: white;
-}
-
-.active {
-    color: yellow;
-}

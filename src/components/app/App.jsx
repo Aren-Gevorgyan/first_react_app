@@ -9,12 +9,13 @@ import Settings from '../settings/Settings';
 import { Route } from 'react-router-dom';
 
 function App(props) {
+  
     return ( 
 
       <div className={style.container}>
       
         <Header/>
-        <Navbar/>
+        <Navbar menuItem={props.store.state.navbar}/>
 
         <div className={style.main_content}>
 
