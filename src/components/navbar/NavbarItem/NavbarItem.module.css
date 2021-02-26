@@ -1,3 +1,11 @@
+.container img {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin: 2px;
+    border: 1px groove gray
+}
+
 .item {
     color: white;
 }
