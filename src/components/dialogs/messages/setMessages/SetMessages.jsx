@@ -6,14 +6,13 @@ const SetMessages = (props) => {
     const bindTextarea = React.createRef();
 
     const getValueMessage = () => {
-        props.setMessage();
+        props.dispatch({type:"ADD-MESSAGES"});
     }
 
     const getPresentValue = () => {
-        let value = bindTextarea.current.value;
-        props.setNewMessageText(value);
+        let newText = bindTextarea.current.value;
+        props.dispatch({type:"SET-NEW-MESSAGES-TEXT", newText});
     }
-    console.log(props.newMessageText)
     
     return(
         <div className={style.container}>

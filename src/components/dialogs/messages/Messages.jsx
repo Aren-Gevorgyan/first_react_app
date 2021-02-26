@@ -14,8 +14,7 @@ const Messages = (props) => {
                {messages}
             </ul>
             <SetMessages
-              setMessage={props.setMessage}
-              setNewMessageText={props.setNewMessageText}
+              dispatch={props.dispatch}
               newMessageText={props.newMessageText}/>
         </div>
     )

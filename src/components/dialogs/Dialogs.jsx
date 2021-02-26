@@ -10,9 +10,8 @@ const Dialogs = (props) => {
           <DialogsPerson person={props.dialogPage.arrayPerson}/>
           <Messages
             messages={props.dialogPage.arrayMessages}
-            setMessage={props.setMessage}
-            setNewMessageText={props.setNewMessageText}
-            newMessageText={props.dialogPage.newMessageText}/>
+            newMessageText={props.dialogPage.newMessageText}
+            dispatch={props.dispatch}/>
         </div>
     )
 }
