@@ -1,17 +1,18 @@
 import React from 'react';
 import style from './SetMessages.module.css';
+import {createActionAddMessages, createActionSetMessagesText} from "../../../../store/store";
 
 const SetMessages = (props) => {
 
     const bindTextarea = React.createRef();
 
     const getValueMessage = () => {
-        props.dispatch({type:"ADD-MESSAGES"});
+        props.dispatch(createActionAddMessages());
     }
 
     const getPresentValue = () => {
         let newText = bindTextarea.current.value;
-        props.dispatch({type:"SET-NEW-MESSAGES-TEXT", newText});
+        props.dispatch(createActionSetMessagesText(newText));
     }
     
     return(

@@ -1,17 +1,18 @@
 import React from 'react';
 import style from './AppendPost.module.css';
-
+import {createActionAddPost, createActionSetPostText} from "../../../../store/store";
+console.log(createActionSetPostText())
 const AppendPosts = (props) => {
 
     let bindTextarea = React.createRef();
 
     const setPost = () => {
-          props.dispatch({type:"ADD-POST"});
+          props.dispatch(createActionAddPost());
     }
 
     const getPresentValue = () => {
         let newText = bindTextarea.current.value;
-        props.dispatch({type:"SET-NEW-POST-TEXT", newText})
+        props.dispatch(createActionSetPostText(newText));
     }
 
     return(

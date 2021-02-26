@@ -1,3 +1,8 @@
+const ADD_POST = "ADD_POST";
+const SET_NEW_POST_TEXT = "SET_NEW_POST_TEXT";
+const ADD_MESSAGES = "ADD_MESSAGES";
+const SET_NEW_MESSAGES_TEXT = "SET_NEW_MESSAGES_TEXT";
+
 const store = {
 
     _state: {
@@ -42,16 +47,16 @@ const store = {
 
     dispatch(action) {
         switch (action.type) {
-            case "ADD-POST":
+            case ADD_POST:
                 this._addPost();
                 break;
-            case "SET-NEW-POST-TEXT":
+            case SET_NEW_POST_TEXT:
                 this._setNewPostText(action.newText);
                 break;
-            case "ADD-MESSAGES":
+            case ADD_MESSAGES:
                 this._addMessage();
                 break;
-            case "SET-NEW-MESSAGES-TEXT":
+            case SET_NEW_MESSAGES_TEXT:
                 this._setNewMessageText(action.newText);
                 break;
         }
@@ -69,7 +74,6 @@ const store = {
     },
 
     _setNewPostText(text) {
-        console.log(text);
         this._state.profilePage.newPostText = text;
         this._subscribe();
     },
@@ -91,5 +95,11 @@ const store = {
         this._subscribe();
     },
 }
+
+
+export const createActionAddPost = () => ({ type: ADD_POST });
+export const createActionSetPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
+export const createActionAddMessages = () => ({ type: ADD_MESSAGES });
+export const createActionSetMessagesText = (newText) => ({ type: SET_NEW_MESSAGES_TEXT, newText });
 
 export default store;
