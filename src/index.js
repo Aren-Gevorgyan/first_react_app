@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
 
 const renderApp = () => {
-
     ReactDOM.render( <
         React.StrictMode > { /* bind url */ } <
         BrowserRouter >
@@ -21,6 +20,6 @@ const renderApp = () => {
 }
 
 renderApp();
-store.subscribe = renderApp;
+store.subscribe(renderApp);
 
 reportWebVitals();

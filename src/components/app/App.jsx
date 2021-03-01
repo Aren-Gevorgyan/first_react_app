@@ -9,25 +9,26 @@ import Settings from '../settings/Settings';
 import { Route } from 'react-router-dom';
 
 function App(props) {
+    console.log(props.store);
   
     return ( 
 
       <div className={style.container}>
       
         <Header/>
-        <Navbar menuItem={props.store.state.navbar}/>
+        <Navbar menuItem={props.store.getState().navbar}/>
 
         <div className={style.main_content}>
 
           <Route path='/profile'>
             <Profile
-             profilePage={props.store.state.profilePage} 
+             profilePage={props.store.getState().profilePage} 
              dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>
           
           <Route path='/dialogs'>
             <Dialogs
-             dialogPage={props.store.state.dialogPage}
+             dialogPage={props.store.getState().dialogPage}
              dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>
 
