@@ -9,7 +9,6 @@ import Settings from '../settings/Settings';
 import { Route } from 'react-router-dom';
 
 function App(props) {
-    console.log(props.store);
   
     return ( 
 

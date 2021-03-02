@@ -1,18 +1,17 @@
 import React from 'react';
 import style from './AppendPost.module.css';
-import {createActionAddPost, createActionSetPostText} from "../../../../store/reduce/profileReduce";
 
 const AppendPosts = (props) => {
 
     let bindTextarea = React.createRef();
 
     const setPost = () => {
-          props.dispatch(createActionAddPost());
+          props.addPost()
     }
 
     const getPresentValue = () => {
         let newText = bindTextarea.current.value;
-        props.dispatch(createActionSetPostText(newText));
+        props.upgradePostText(newText);
     }
 
     return(

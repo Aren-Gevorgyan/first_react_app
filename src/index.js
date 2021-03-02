@@ -7,15 +7,14 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
 
 const renderApp = () => {
-    ReactDOM.render( <
-        React.StrictMode > { /* bind url */ } <
-        BrowserRouter >
-        <
-        App store = { store }
-        />  <
-        /BrowserRouter >  <
-        /React.StrictMode>,
-        document.getElementById('root')
+    ReactDOM.render( 
+      < React.StrictMode >
+       { /* bind url */ } 
+       <BrowserRouter>
+       <App store = { store }/> 
+       </BrowserRouter > 
+       </React.StrictMode>,
+       document.getElementById('root')
     );
 }
 

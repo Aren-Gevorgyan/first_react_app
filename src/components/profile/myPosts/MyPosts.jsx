@@ -7,14 +7,14 @@ const MyPosts = (props) => {
 
     let post = props.arrayPosts
     .map(element =>  <Posts post={element.post} like={element.like}/>)
-    
+
     return(
         <div>
 
-          <AppendPost 
-          
-          dispatch={props.dispatch}
-          newPostText={props.newPostText}/>
+          <AppendPost        
+            addPost={props.addPost}
+            upgradePostText={props.upgradePostText}
+            newPostText={props.newPostText}/>
 
           {post}
 
