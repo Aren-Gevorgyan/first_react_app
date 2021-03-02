@@ -1,6 +1,6 @@
 import React from 'react';
 import {createActionAddPost, createActionSetPostText} from "../../../store/reduce/profileReduce";
-import MyPosts from '../myPosts/MyPosts';
+import MyPosts from './myPosts/MyPosts';
 
 const MyPostsContainer = (props) => {
 
