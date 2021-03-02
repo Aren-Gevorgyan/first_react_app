@@ -8,7 +8,7 @@ const NavbarItem = (props) => {
     if(props.friends !== undefined){
 
         friendsItem = props.friends.map(value => (
-                 <img className={style} src={value} alt="friend photo"/>
+                 <img key={value.id} className={style} src={value.img} alt="friend photo"/>
             )) 
 
     }else{

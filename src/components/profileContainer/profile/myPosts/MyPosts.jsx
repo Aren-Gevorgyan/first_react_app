@@ -6,7 +6,7 @@ import AppendPost from './appendPost/AppendPost';
 const MyPosts = (props) => {
 
     let post = props.arrayPosts
-    .map(element =>  <Posts post={element.post} like={element.like}/>)
+    .map(element =>  <Posts key={element.id} post={element.post} like={element.like}/>)
 
     return(
         <div>

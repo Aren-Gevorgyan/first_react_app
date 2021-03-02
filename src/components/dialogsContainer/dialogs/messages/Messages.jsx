@@ -6,7 +6,7 @@ import SetMessages from './setMessages/SetMessages';
 const Messages = (props) => {
 
     let messages = props.messages
-    .map(element => <MessagesItem message={element.message} id={element.id}/>) 
+    .map(element => <MessagesItem key={element.id} message={element.message} id={element.id}/>) 
     
     return (
         <div className={style.container}>
