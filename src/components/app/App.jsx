@@ -2,7 +2,7 @@ import style from './App.module.css';
 import Header from '../header/Header';
 import Navbar from '../navbar/Navbar';
 import Profile from '../profile/Profile';
-import Dialogs from '../dialogs/Dialogs';
+import DialogsContainer from '../dialogsContainer/DialogsContainer';
 import News from '../news/News';
 import Music from '../music/Music';
 import Settings from '../settings/Settings';
@@ -26,7 +26,7 @@ function App(props) {
           </Route>
           
           <Route path='/dialogs'>
-            <Dialogs
+            <DialogsContainer
              dialogPage={props.store.getState().dialogPage}
              dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>
