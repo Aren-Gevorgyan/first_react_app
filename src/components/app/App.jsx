@@ -1,7 +1,7 @@
 import style from './App.module.css';
 import Header from '../header/Header';
 import Navbar from '../navbar/Navbar';
-import Profile from '../profile/Profile';
+import ProfileContainer from '../profileContainer/ProfileContainer';
 import DialogsContainer from '../dialogsContainer/DialogsContainer';
 import News from '../news/News';
 import Music from '../music/Music';
@@ -20,7 +20,7 @@ function App(props) {
         <div className={style.main_content}>
 
           <Route path='/profile'>
-            <Profile
+            <ProfileContainer
              profilePage={props.store.getState().profilePage} 
              dispatch={props.store.dispatch.bind(props.store)}/>
           </Route>

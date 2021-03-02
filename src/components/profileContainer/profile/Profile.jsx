@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Profile.module.css';
-import MyPostsContainer from './myPostsContainer/MyPostsContainer';
+import MyPosts from './myPosts/MyPosts';
 import DescriptionPerson from './descriptionPerson/DescriptionPerson';
 
 const Profile = (props)=>{
@@ -10,10 +10,11 @@ const Profile = (props)=>{
      <div className={style.container}>
   
         <DescriptionPerson/> 
-        <MyPostsContainer
-          arrayPosts={props.profilePage.arrayPosts}
-          newPostText={props.profilePage.newPostText}
-          dispatch={props.dispatch}/>
+        <MyPosts
+          arrayPosts={props.arrayPosts}
+          newPostText={props.newPostText}
+          addPost={props.addPost}
+          upgradePostText={props.upgradePostText}/>
 
      </div> 
 
