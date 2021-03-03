@@ -1,23 +1,27 @@
-import React from 'react';
 import {createActionAddMessages, createActionSetMessagesText} from "../../store/reduce/dialogReduce";
 import Dialogs from './dialogs/Dialogs';
+import {connect} from 'react-redux';
 
-const DialogsContainer = (props) => {
-
-    const addMessages = () => {
-        props.dispatch(createActionAddMessages());
+const mapStateToProps = (state) => {
+    return {
+       arrayPerson: state.dialogPage.arrayPerson,
+       arrayMessages: state.dialogPage.arrayMessages,
+       newMessageText: state.dialogPage.newMessageText,
     }
-
-    const upgradeMessagesText = (text) => {
-        props.dispatch(createActionSetMessagesText(text));
-    }
-    return(<Dialogs
-            arrayPerson={props.dialogPage.arrayPerson}
-            newMessageText={props.dialogPage.newMessageText}
-            messages={props.dialogPage.arrayMessages}
-            addMessages={addMessages}
-            upgradeMessagesText={upgradeMessagesText}/>
-    )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMessages: () => {
+             dispatch(createActionAddMessages())
+        },
+
+        upgradeMessagesText: (text) => {
+             dispatch(createActionSetMessagesText(text))
+        }
+    }
+} 
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

@@ -4,12 +4,11 @@ import DialogsPerson from './dialogsPerson/DialogsPerson';
 import Messages from './messages/Messages';
 
 const Dialogs = (props) => {
-
     return(
         <div className={style.container}>
           <DialogsPerson person={props.arrayPerson}/>
           <Messages
-            messages={props.messages}
+            arrayMessages={props.arrayMessages}
             newMessageText={props.newMessageText}
             addMessages={props.addMessages}
             upgradeMessagesText={props.upgradeMessagesText}/>

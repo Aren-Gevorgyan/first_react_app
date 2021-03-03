@@ -5,7 +5,7 @@ import SetMessages from './setMessages/SetMessages';
 
 const Messages = (props) => {
 
-    let messages = props.messages
+    let messages = props.arrayMessages
     .map(element => <MessagesItem key={element.id} message={element.message} id={element.id}/>) 
     
     return (
