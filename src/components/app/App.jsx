@@ -1,6 +1,6 @@
 import style from './App.module.css';
 import Header from '../header/Header';
-import Navbar from '../navbar/Navbar';
+import NavbarContainer from '../navbarContainer/NavbarContainer';
 import ProfileContainer from '../profileContainer/ProfileContainer';
 import DialogsContainer from '../dialogsContainer/DialogsContainer';
 import News from '../news/News';
@@ -15,20 +15,16 @@ function App(props) {
       <div className={style.container}>
       
         <Header/>
-        <Navbar menuItem={props.store.getState().navbar}/>
+        <NavbarContainer/>
 
         <div className={style.main_content}>
 
           <Route path='/profile'>
-            <ProfileContainer
-             profilePage={props.store.getState().profilePage} 
-             dispatch={props.store.dispatch.bind(props.store)}/>
+            <ProfileContainer/>
           </Route>
           
           <Route path='/dialogs'>
-            <DialogsContainer
-             dialogPage={props.store.getState().dialogPage}
-             dispatch={props.store.dispatch.bind(props.store)}/>
+            <DialogsContainer/>
           </Route>
 
           <Route path='/news'><News/></Route>
