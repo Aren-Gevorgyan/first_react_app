@@ -20,18 +20,19 @@ const dialogReduce = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_MESSAGES:
-            {
-                let newMessage = {
-                    id: 4,
-                    message: state.newMessageText,
-                }
-                state.arrayMessages.push(newMessage);
-                return {...state, arrayMessages: [...state.arrayMessages], newMessageText: "" }
+            let newMessage = {
+                id: 4,
+                message: state.newMessageText,
+            }
+            return {
+                ...state,
+                arrayMessages: [...state.arrayMessages, newMessage],
+                newMessageText: ""
             }
         case SET_NEW_MESSAGES_TEXT:
-            {
-                return {...state, newMessageText: action.newText };
-            }
+            return {...state,
+                newMessageText: action.newText
+            };
         default:
             return state;
     }

@@ -13,19 +13,21 @@ const initialState = {
 const profileReduce = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            {
-                let newPost = {
-                    id: 4,
-                    post: state.newPostText,
-                    like: 0
-                }
-                state.arrayPosts.push(newPost);
-                return {...state, arrayPosts: [...state.arrayPosts], newPostText: "" };
+            let newPost = {
+                id: 4,
+                post: state.newPostText,
+                like: 0
             }
+            return {
+                ...state,
+                arrayPosts: [...state.arrayPosts, newPost],
+                newPostText: ""
+            };
         case SET_NEW_POST_TEXT:
-            {
-                return {...state, newPostText: action.newText };
-            }
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         default:
             return state;
     }
