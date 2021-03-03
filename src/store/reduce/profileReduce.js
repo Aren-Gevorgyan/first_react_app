@@ -19,17 +19,12 @@ const profileReduce = (state = initialState, action) => {
                     post: state.newPostText,
                     like: 0
                 }
-                let stateCopy = {...state };
-                stateCopy.arrayPosts = [...state.arrayPosts];
-                stateCopy.arrayPosts.push(newPost);
-                stateCopy.newPostText = "";
-                return stateCopy;
+                state.arrayPosts.push(newPost);
+                return {...state, arrayPosts: [...state.arrayPosts], newPostText: "" };
             }
         case SET_NEW_POST_TEXT:
             {
-                let stateCopy = {...state };
-                stateCopy.newPostText = action.newText;
-                return stateCopy;
+                return {...state, newPostText: action.newText };
             }
         default:
             return state;

@@ -25,17 +25,12 @@ const dialogReduce = (state = initialState, action) => {
                     id: 4,
                     message: state.newMessageText,
                 }
-                let stateCopy = {...state }
-                stateCopy.arrayMessages = [...state.arrayMessages];
-                stateCopy.arrayMessages.push(newMessage);
-                stateCopy.newMessageText = "";
-                return stateCopy;
+                state.arrayMessages.push(newMessage);
+                return {...state, arrayMessages: [...state.arrayMessages], newMessageText: "" }
             }
         case SET_NEW_MESSAGES_TEXT:
             {
-                let stateCopy = {...state }
-                stateCopy.newMessageText = action.newText;
-                return stateCopy;
+                return {...state, newMessageText: action.newText };
             }
         default:
             return state;
