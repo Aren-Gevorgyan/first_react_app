@@ -12,7 +12,9 @@ const Users = (props) => {
                  photo={value.photo}
                  status={value.status}
                  city={value.location.city}
-                 country={value.location.country}/>
+                 country={value.location.country}
+                 follow={value.follow}
+                 following={props.following}/>
     })
 
     return (

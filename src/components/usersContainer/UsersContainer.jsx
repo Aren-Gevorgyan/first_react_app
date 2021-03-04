@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        follow: (follow) => {
-            dispatch(createFollowAction(follow));
+        following: (follow, currentId) => {
+            dispatch(createFollowAction(follow, currentId));
         }
     }
 }

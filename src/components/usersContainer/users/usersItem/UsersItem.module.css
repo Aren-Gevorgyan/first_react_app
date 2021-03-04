@@ -41,6 +41,7 @@
 .descTop p {
     font-size: 8px;
     color: gray;
+    font-weight: bold;
 }
 
 .follow {
@@ -51,5 +52,6 @@
     color: white;
     font-size: 7px;
     outline: none;
-    border: none
+    border: none;
+    font-weight: bold;
 }

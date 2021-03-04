@@ -2,6 +2,7 @@ import React from 'react';
 import style from './UsersItem.module.css';
 
 const UsersItem = (props) => {
+   console.log(2)
     
     return (
          <div className={style.container}>
@@ -29,8 +30,12 @@ const UsersItem = (props) => {
               </div>
 
             </div>
+            
+            <button onClick={()=>props.following(!props.follow, props.id)} className={style.follow}>
 
-            <button className={style.follow}>Unfollow</button>
+              {props.follow ? "Follow" : "Unfollow"}
+
+            </button>
 
          </div>   
     )
