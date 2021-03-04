@@ -27,6 +27,10 @@ function App(props) {
             <DialogsContainer/>
           </Route>
 
+          <Route path='/users'>
+            <UsersContainer/>
+          </Route>
+
           <Route path='/news'><News/></Route>
           <Route path='/music'><Music/></Route>
           <Route path='/settings'><Settings/></Route>

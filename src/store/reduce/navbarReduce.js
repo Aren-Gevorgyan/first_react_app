@@ -1,11 +1,12 @@
 const initialState = [
     { id: "1", name: "Profile", path: "profile" },
     { id: "2", name: "Dialog", path: "dialogs" },
-    { id: "3", name: "News", path: "news" },
+    { id: "3", name: "Find users", path: "users" },
+    { id: "4", name: "News", path: "news" },
     { id: "4", name: "Music", path: "music" },
-    { id: "5", name: "Settings", path: "settings" },
+    { id: "6", name: "Settings", path: "settings" },
     {
-        id: "6",
+        id: "7",
         name: "Friends",
         path: "friends",
         friends: [
