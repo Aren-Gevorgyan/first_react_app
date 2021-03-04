@@ -2,7 +2,6 @@ import React from 'react';
 import style from './UsersItem.module.css';
 
 const UsersItem = (props) => {
-   console.log(2)
     
     return (
          <div className={style.container}>

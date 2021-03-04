@@ -3,7 +3,7 @@ const initialState = [
     { id: "2", name: "Dialog", path: "dialogs" },
     { id: "3", name: "Find users", path: "users" },
     { id: "4", name: "News", path: "news" },
-    { id: "4", name: "Music", path: "music" },
+    { id: "5", name: "Music", path: "music" },
     { id: "6", name: "Settings", path: "settings" },
     {
         id: "7",

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
-import {createFollowAction} from '../../store/reduce/usersReduce';
+import {createFollowAction, createSetUsersAction} from '../../store/reduce/usersReduce';
 
 
 const mapStateToProps = (state) => {
@@ -13,6 +13,10 @@ const mapDispatchToProps = (dispatch) => {
     return{
         following: (follow, currentId) => {
             dispatch(createFollowAction(follow, currentId));
+        },
+
+        usersData: (usersData) => {
+            dispatch(createSetUsersAction(usersData));
         }
     }
 }

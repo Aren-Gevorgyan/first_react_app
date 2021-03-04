@@ -7,21 +7,20 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
 import { Provider } from 'react-redux';
 
-const renderApp = () => {
-    ReactDOM.render( 
-      < React.StrictMode >
-        { /* bind url */ } 
-        <BrowserRouter>
-          <Provider store={store}>
-           <App/>
-          </Provider> 
-        </BrowserRouter > 
-      </React.StrictMode>,
-       document.getElementById('root')
-    );
-}
 
-renderApp();
-store.subscribe(renderApp);
+ReactDOM.render( <
+    React.StrictMode > { /* bind url */ } <
+    BrowserRouter >
+    <
+    Provider store = { store } >
+    <
+    App / >
+    <
+    /Provider>  <
+    /BrowserRouter >  <
+    /React.StrictMode>,
+    document.getElementById('root')
+);
+
 
 reportWebVitals();

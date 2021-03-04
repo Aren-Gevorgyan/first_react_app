@@ -21,7 +21,7 @@ const dialogReduce = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGES:
             let newMessage = {
-                id: 4,
+                id: 5,
                 message: state.newMessageText,
             }
             return {
