@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.avatar {
+    width: 10%;
+    height: 40px;
+}
+
+.avatar>img {
+    width: 100%;
+    height: 40px;
+}
+
+.usersContainer {
+    display: flex;
+}
+
+.description {
+    display: flex;
+    width: 89%;
+    height: 40px;
+    margin-left: 1%;
+    border: 1px solid gray;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.descTop,
+.descFooter {
+    width: 100%;
+    height: 10px;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.descFooter p,
+.descTop p {
+    font-size: 8px;
+    color: gray;
+}
+
+.follow {
+    width: 10%;
+    height: 14px;
+    background-color: darkgreen;
+    border-radius: 1px;
+    color: white;
+    font-size: 7px;
+    outline: none;
+    border: none
+}

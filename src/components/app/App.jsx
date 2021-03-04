@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import NavbarContainer from '../navbarContainer/NavbarContainer';
 import ProfileContainer from '../profileContainer/ProfileContainer';
 import DialogsContainer from '../dialogsContainer/DialogsContainer';
+import UsersContainer from '../usersContainer/UsersContainer';
 import News from '../news/News';
 import Music from '../music/Music';
 import Settings from '../settings/Settings';
