@@ -14,12 +14,12 @@ const usersReduce = (state = initialState, action) => {
             let usersArrayCopy = state.arrayUsers.map(value => {
 
                 if (value.id === action.currentId) {
-                    return {...value, follow: action.follow };
+                    return {...value, followed: action.follow };
                 }
                 return value;
             })
 
-            return {...state, arrayUsers: usersArrayCopy, follow: action }
+            return {...state, arrayUsers: usersArrayCopy, followed: action }
         default:
             return state;
     }

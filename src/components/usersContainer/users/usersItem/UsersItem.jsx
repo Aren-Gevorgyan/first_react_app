@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './UsersItem.module.css';
+import defaultAvatar from '.././../../../assets/images/default_avatar.png';
 
 const UsersItem = (props) => {
     
@@ -10,7 +11,7 @@ const UsersItem = (props) => {
 
               <div className={style.avatar}>
 
-                 <img src={props.photo}/>
+                 <img src={!props.photo ? defaultAvatar : props.photo}/>
 
               </div> 
 
@@ -18,12 +19,12 @@ const UsersItem = (props) => {
 
                  <div className={style.descTop}>
                     <p>{props.name}</p>
-                    <p>{props.country}</p>
+                    <p>?</p>
                  </div>
 
                  <div className={style.descFooter}>
                     <p>{props.status}</p>
-                    <p>{props.city}</p>
+                    <p>?</p>
                  </div>
 
               </div>
