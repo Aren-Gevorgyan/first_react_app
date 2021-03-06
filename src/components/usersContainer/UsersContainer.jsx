@@ -1,11 +1,19 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
-import {createFollowAction, createSetUsersAction} from '../../store/reduce/usersReduce';
+import {
+    createCurrentPageNumberAction,
+    createFollowAction,
+    createSetUsersAction,
+    createTotalCountAction,
+    setCurrentPageNumber} from '../../store/reduce/usersReduce';
 
 
 const mapStateToProps = (state) => {
     return{
         arrayUsers: state.usersPage.arrayUsers,
+        totalCount: state.usersPage.totalCount,
+        currentPage: state.usersPage.currentPage,
+        countUsers: state.usersPage.countUsers,
     }
 }
 
@@ -17,6 +25,14 @@ const mapDispatchToProps = (dispatch) => {
 
         usersData: (usersData) => {
             dispatch(createSetUsersAction(usersData));
+        },
+
+        setTotalCount: (count) => {
+           dispatch(createTotalCountAction(count))
+        },
+
+        setCurrentPageNumber: (p) => {
+            dispatch(createCurrentPageNumberAction(p));
         }
     }
 }
