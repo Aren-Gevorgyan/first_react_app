@@ -9,8 +9,6 @@ const Paginator = (props) => {
     let pageFirst = props.replacePage.numberFirst;
     let pageSecond = props.replacePage.numberSecond;
 
-
-    // add parameters to work with pure function
     let countPageArray = function(pageFirst, pageSecond, countPage) {
 
       let numbersArray = [];
@@ -25,8 +23,8 @@ const Paginator = (props) => {
       return numbersArray;
 
       function disabledButton(props, pageFirst, pageSecond, totalCount) {
-            const ifPageNumberLessOfOne = pageFirst === 1;
-            const ifPageNumberMoreOfOne = totalCount < pageSecond;
+            const ifPageNumberLessOfOne = pageFirst <= 1;
+            const ifPageNumberMoreOfOne = totalCount <= pageSecond;
 
             if(ifPageNumberLessOfOne){ 
                props.setDisabledPrev(true);
@@ -52,16 +50,15 @@ const Paginator = (props) => {
                        })
     
     // add parameters to work with pure function
-    let next = (props, pageSecond) => {
-      props.setDisabledPrev(false);
+    let prev = (props, pageSecond) => {
+      props.setDisabledNext(false);
       props.setNewPagesNumber(
         { numberFirst: pageSecond - 7,
           numberSecond: pageSecond - 4
         })
     }
 
-    // add parameters to work with pure function
-    let prev = (props, pageSecond) => {
+    let next = (props, pageSecond) => {
       props.setDisabledPrev(false);
       props.setNewPagesNumber(
         { numberFirst: ++pageSecond,
@@ -74,11 +71,11 @@ const Paginator = (props) => {
            
             <div className={style.paginatorContainer}>
                <div>
-                  <button onClick={()=>{next(props, pageSecond)}} disabled={props.disabledPrev} className={style.previous}>prev</button>
+                  <button onClick={()=>{prev(props, pageSecond)}} disabled={props.disabledPrev} className={style.previous}>prev</button>
                   <div>
                     {numbersArray}
                   </div>
-                  <button onClick={()=>{prev(props, pageSecond)}} disabled={props.disabledNext} className={style.next}>next</button>
+                  <button onClick={()=>{next(props, pageSecond)}} disabled={props.disabledNext} className={style.next}>next</button>
                </div>
             </div>
          
