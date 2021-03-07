@@ -35,6 +35,7 @@ class Users extends React.Component {
             <Paginator 
                totalCount={this.props.totalCount}
                countUsers={this.props.countUsers}
+               currentPage={this.props.currentPage}
                usersData={this.props.usersData}
                setCurrentPageNumber={this.props.setCurrentPageNumber}
                replacePage={this.props.replacePage}

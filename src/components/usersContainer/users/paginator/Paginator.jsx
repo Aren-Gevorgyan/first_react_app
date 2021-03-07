@@ -44,9 +44,13 @@ const Paginator = (props) => {
           })
           props.setCurrentPageNumber(p);
     }
-
+      
     let numbersArray = countPageArray.map( page => {
-                          return <span onClick={()=> {getUsers(page)}} key={page}>{page}</span>
+                          return <span onClick={()=> {getUsers(page)}} 
+                                       key={page}
+                                       style={page === props.currentPage ? {color: "black", backgroundColor: "#9AC895"}: {}}>
+                                       {page}
+                                 </span>
                        })
     
     // add parameters to work with pure function
