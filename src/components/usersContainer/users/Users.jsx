@@ -7,32 +7,13 @@ import * as axios from 'axios';
 class Users extends React.Component {
 
    componentDidMount(){
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${5}&count=${5}`).then(response => {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countUsers}`)
+           .then(response => {
+         debugger
          this.props.usersData(response.data.items);
          this.props.setTotalCount(response.data.totalCount);
       })
    }
-
-   // _getUsers(p){
-   //    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${5}`).then(response => {
-   //       this.props.usersData(response.data.items);
-   //    })
-   //    this.props.setCurrentPageNumber(p);
-   // }
-
-   // _pagination(){
-   //    const countPage = Math.ceil((this.props.totalCount - 10542) / this.props.countUsers);
-   //    let numbersArray = [];
-   //    for (let i = 1; i <= countPage; i++){
-   //        numbersArray.push(i);
-   //    }
-      
-   //    numbersArray = numbersArray.map( page => {
-   //        return <span onClick={()=> {this._getUsers(page)}} key={page}>{page}</span>
-   //    })
-   //    console.log(numbersArray)
-   //    return numbersArray;
-   // }
 
    _usersItem(){
       let usersItem = this.props.arrayUsers.map(value => {
@@ -47,7 +28,6 @@ class Users extends React.Component {
       })
       return usersItem;
    }
-
    render(){
       return (
          <div className={style.container}>
@@ -56,7 +36,11 @@ class Users extends React.Component {
                totalCount={this.props.totalCount}
                countUsers={this.props.countUsers}
                usersData={this.props.usersData}
-               setCurrentPageNumber={this.props.setCurrentPageNumber}/>
+               setCurrentPageNumber={this.props.setCurrentPageNumber}
+               replacePage={this.props.replacePage}
+               setNewPagesNumber={this.props.setNewPagesNumber}
+               disabledPrev={this.props.disabledPrev}
+               disabledNext={this.props.disabledNext}/>
 
             <div>
               <h3>Users</h3>

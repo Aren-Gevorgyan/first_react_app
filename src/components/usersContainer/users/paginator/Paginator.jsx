@@ -3,24 +3,31 @@ import style from './Paginator.module.css';
 import * as axios from 'axios';
 
 const Paginator = (props) => {
+    //get count page
+    const countPage = Math.ceil(props.totalCount / props.countUsers);
+    let pageFirst = props.replacePage.numberFirst;
+    let pageSecond = props.replacePage.numberSecond;
 
-    let countPageArray = function() {
 
-      const countPage = Math.ceil(props.totalCount / props.countUsers); // 10600
+    // add parameters to work with pure function
+    let countPageArray = function(pageFirst, pageSecond, countPage) {
+      
       let numbersArray = [];
       for (let i = 1; i <= countPage; i++){
-          if(i > 4){
+          if(pageFirst > pageSecond){
               break;
           }else{
-            numbersArray.push(i)
+            
+            numbersArray.push(pageFirst++)
           }
       }
       return numbersArray;
 
-    }()
+    }(pageFirst, pageSecond, countPage);
 
     const getUsers = (p) => {
-          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${5}`).then(response => {
+          //get new five users
+          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.countUsers}`).then(response => {
             props.usersData(response.data.items);
           })
           props.setCurrentPageNumber(p);
@@ -29,17 +36,32 @@ const Paginator = (props) => {
     let numbersArray = countPageArray.map( page => {
                           return <span onClick={()=> {getUsers(page)}} key={page}>{page}</span>
                        })
+    
+    // add parameters to work with pure function
+    let next = (props, pageSecond) => {
+      props.setNewPagesNumber(
+        { numberFirst: pageSecond - 7,
+          numberSecond: pageSecond - 4
+        })
+    }
+    // add parameters to work with pure function
+    let prev = (props, pageSecond) => {
+      props.setNewPagesNumber(
+        { numberFirst: ++pageSecond,
+          numberSecond: pageSecond + 3
+        })
+    }  
 
     return (
          <div className={style.container}>
            
             <div className={style.paginatorContainer}>
                <div>
-                  <button className={style.previous}>prev</button>
+                  <button onClick={()=>{next(props, pageSecond)}} disabled={props.disabledPrev} className={style.previous}>prev</button>
                   <div>
                     {numbersArray}
                   </div>
-                  <button className={style.next}>next</button>
+                  <button onClick={()=>{prev(props, pageSecond)}} disabled={props.disabledNext} className={style.next}>next</button>
                </div>
             </div>
          
