@@ -40,7 +40,9 @@ class Users extends React.Component {
                replacePage={this.props.replacePage}
                setNewPagesNumber={this.props.setNewPagesNumber}
                disabledPrev={this.props.disabledPrev}
-               disabledNext={this.props.disabledNext}/>
+               disabledNext={this.props.disabledNext}
+               setDisabledPrev={this.props.setDisabledPrev}
+               setDisabledNext={this.props.setDisabledNext}/>
 
             <div>
               <h3>Users</h3>

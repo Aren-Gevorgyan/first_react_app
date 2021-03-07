@@ -3,6 +3,7 @@ import style from './Paginator.module.css';
 import * as axios from 'axios';
 
 const Paginator = (props) => {
+
     //get count page
     const countPage = Math.ceil(props.totalCount / props.countUsers);
     let pageFirst = props.replacePage.numberFirst;
@@ -11,17 +12,30 @@ const Paginator = (props) => {
 
     // add parameters to work with pure function
     let countPageArray = function(pageFirst, pageSecond, countPage) {
-      
+
       let numbersArray = [];
       for (let i = 1; i <= countPage; i++){
           if(pageFirst > pageSecond){
               break;
           }else{
-            
-            numbersArray.push(pageFirst++)
+            disabledButton(props, pageFirst, pageSecond, props.totalCount);
+            numbersArray.push(pageFirst++)          
           }
       }
       return numbersArray;
+
+      function disabledButton(props, pageFirst, pageSecond, totalCount) {
+            const ifPageNumberLessOfOne = pageFirst === 1;
+            const ifPageNumberMoreOfOne = totalCount < pageSecond;
+
+            if(ifPageNumberLessOfOne){ 
+               props.setDisabledPrev(true);
+            }
+
+            if(ifPageNumberMoreOfOne){
+              props.setDisabledNext(true);
+            }
+      }
 
     }(pageFirst, pageSecond, countPage);
 
@@ -39,13 +53,16 @@ const Paginator = (props) => {
     
     // add parameters to work with pure function
     let next = (props, pageSecond) => {
+      props.setDisabledPrev(false);
       props.setNewPagesNumber(
         { numberFirst: pageSecond - 7,
           numberSecond: pageSecond - 4
         })
     }
+
     // add parameters to work with pure function
     let prev = (props, pageSecond) => {
+      props.setDisabledPrev(false);
       props.setNewPagesNumber(
         { numberFirst: ++pageSecond,
           numberSecond: pageSecond + 3

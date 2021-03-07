@@ -5,7 +5,9 @@ import {
     createFollowAction,
     createSetUsersAction,
     createTotalCountAction,
-    createNewPagesAction,} from '../../store/reduce/usersReduce';
+    createNewPagesAction,
+    createDisabledPrevAction,
+    createDisabledNextAction} from '../../store/reduce/usersReduce';
 
 
 const mapStateToProps = (state) => {
@@ -37,9 +39,19 @@ const mapDispatchToProps = (dispatch) => {
         setCurrentPageNumber: (p) => {
             dispatch(createCurrentPageNumberAction(p));
         },
+
         setNewPagesNumber: (numberObj) => {
             dispatch(createNewPagesAction(numberObj));
+        },
+
+        setDisabledPrev: (disabled) => {
+            dispatch(createDisabledPrevAction(disabled));
+        },
+
+        setDisabledNext: (disabled) => {
+            dispatch(createDisabledNextAction(disabled));
         }
+        
     }
 }
 
