@@ -9,7 +9,7 @@
     list-style-type: none;
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #181917;
     padding: 2px 0 2px;
 }
 
@@ -18,6 +18,11 @@
     height: 18px;
     border-radius: 50%;
     margin: 0 2% 0 2%;
+}
+
+.personItem {
+    color: #181917;
+    font-weight: bold;
 }
 
 .active {

@@ -17,7 +17,7 @@ const NavbarItem = (props) => {
 
     return(
         <li className={style.active, style.container}>
-            <NavLink to={`/${props.path}`} activeClassName={style.active}>{props.name}</NavLink>
+            <NavLink to={`/${props.path}`} className={style.menu} activeClassName={style.active}>{props.name}</NavLink>
             <div>{friendsItem}</div>
         </li>
     )

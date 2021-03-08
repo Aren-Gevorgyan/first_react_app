@@ -31,7 +31,6 @@ const profileReduce = (state = initialState, action) => {
                 newPostText: action.newText
             };
         case PROFILE:
-            console.log(action)
             return {...state, profile: action.profileData }
         default:
             return state;

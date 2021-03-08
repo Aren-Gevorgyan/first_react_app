@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './DescriptionPerson.module.css';
+import defaultAvatar from '../../../../assets/images/default_avatar.png';
 
 const DescriptionPerson = (props)=>{
    return( 
@@ -11,7 +12,7 @@ const DescriptionPerson = (props)=>{
             alt="cover photo"/>
 
         <div className={style.description}>
-           <img src={props.profile.photos.large} className={style.avatar} alt="avatar"/>
+           <img src={!props.profile.photos.large? defaultAvatar:props.profile.photos.large} className={style.avatar} alt="avatar"/>
            <div className={style.aboutMy}>
               <h2>{props.profile.fullName}</h2>
               <dl>

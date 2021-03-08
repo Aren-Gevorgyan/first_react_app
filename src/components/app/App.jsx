@@ -20,7 +20,7 @@ function App(props) {
 
         <div className={style.main_content}>
 
-          <Route path='/profile'>
+          <Route path='/profile/:userId?'>
             <ProfileContainer/>
           </Route>
           

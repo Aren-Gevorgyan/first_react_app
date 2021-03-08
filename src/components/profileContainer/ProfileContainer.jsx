@@ -1,6 +1,28 @@
 import {addPost, upgradePostText, profileData} from "../../store/reduce/profileReduce";
 import Profile from './profile/Profile';
 import {connect} from 'react-redux';
+import React from 'react';
+import * as axios from 'axios';
+import { withRouter } from "react-router";
+import Loading from '../common/loading/Loading';
+
+
+class ProfileContainer extends React.Component{
+
+    componentDidMount(){
+        let userId =  this.props.match.params.userId;
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!userId? 2 : userId}`)
+             .then(response => {
+              console.log(response);
+              this.props.profileData(response.data);
+        })
+    }
+
+    render(){
+        return !this.props.profile ? <Loading/> : 
+               <Profile  {...this.props}/>      
+    }
+}
 
 const mapStateToProps=(state)=>{
     return {
@@ -21,6 +43,6 @@ const mapStateToProps=(state)=>{
 //     }
 // }
 
-const ProfileContainer = connect(mapStateToProps, {addPost, upgradePostText, profileData})(Profile);
-
-export default ProfileContainer;
+const WithRProfileComponent = withRouter(ProfileContainer);
+ 
+export default connect(mapStateToProps, {addPost, upgradePostText, profileData})(WithRProfileComponent);
