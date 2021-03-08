@@ -8,7 +8,7 @@
     height: 40px;
 }
 
-.avatar>img {
+.avatar a img {
     width: 100%;
     height: 40px;
 }

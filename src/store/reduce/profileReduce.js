@@ -1,5 +1,6 @@
 const ADD_POST = "ADD_POST";
 const SET_NEW_POST_TEXT = "SET_NEW_POST_TEXT";
+const PROFILE = "PROFILE";
 
 const initialState = {
     arrayPosts: [
@@ -7,6 +8,7 @@ const initialState = {
         { id: 2, post: 'My second post', like: 2 },
         { id: 3, post: 'My third post', like: 7 },
     ],
+    profile: null,
     newPostText: "",
 }
 
@@ -28,6 +30,9 @@ const profileReduce = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newText
             };
+        case PROFILE:
+            console.log(action)
+            return {...state, profile: action.profileData }
         default:
             return state;
     }
@@ -36,5 +41,6 @@ const profileReduce = (state = initialState, action) => {
 
 export const addPost = () => ({ type: ADD_POST });
 export const upgradePostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
+export const profileData = (profileData) => ({ type: PROFILE, profileData })
 
 export default profileReduce;

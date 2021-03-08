@@ -6,10 +6,21 @@ const DescriptionPerson = (props)=>{
 
      <div className={style.container}>
   
-       <img src="https://www.incimages.com/uploaded_files/image/1920x1080/westworld-2-hbo-background-1920_419617.jpg" alt="cover photo"/>
+       <img src="https://www.incimages.com/uploaded_files/image/1920x1080/westworld-2-hbo-background-1920_419617.jpg" 
+            className={style.coverPhoto}
+            alt="cover photo"/>
 
         <div className={style.description}>
-           avatar + description
+           <img src={props.profile.photos.large} className={style.avatar} alt="avatar"/>
+           <div className={style.aboutMy}>
+              <h2>{props.profile.fullName}</h2>
+              <dl>
+                 <dt>Contacts</dt>
+                 <dd>{props.profile.contacts.facebook}</dd>
+                 <dd>{props.profile.contacts.github}</dd>
+                 <dd>{props.profile.contacts.vk}</dd>
+              </dl>
+           </div>
         </div>
 
      </div> 

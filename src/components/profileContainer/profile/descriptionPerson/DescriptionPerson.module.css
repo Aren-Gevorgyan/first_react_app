@@ -2,11 +2,38 @@
     margin-bottom: 10px;
 }
 
-.container img {
+.coverPhoto {
     width: 100%;
     height: 200px;
 }
 
 .description {
+    display: flex;
     margin-left: 4px;
+}
+
+.aboutMy {
+    margin-left: 1%;
+}
+
+.aboutMy h2 {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.aboutMy dl dt {
+    margin-top: 4px;
+    font-weight: bold;
+    font-size: 8px;
+}
+
+.aboutMy dl dd {
+    font-weight: bold;
+    font-size: 6px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 }
