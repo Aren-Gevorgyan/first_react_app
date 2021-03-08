@@ -8,7 +8,7 @@ const NavbarItem = (props) => {
     if(props.friends !== undefined){
 
         friendsItem = props.friends.map(value => (
-                 <img key={value.id} className={style} src={value.img} alt="friend photo"/>
+                 <img key={value.id} src={value.img} alt="friend photo"/>
             )) 
 
     }else{
@@ -16,7 +16,7 @@ const NavbarItem = (props) => {
     }
 
     return(
-        <li className={style.item, style.active, style.container}>
+        <li className={style.active, style.container}>
             <NavLink to={`/${props.path}`} activeClassName={style.active}>{props.name}</NavLink>
             <div>{friendsItem}</div>
         </li>

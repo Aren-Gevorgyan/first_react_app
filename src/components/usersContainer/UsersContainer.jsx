@@ -7,7 +7,8 @@ import {
     createTotalCountAction,
     createNewPagesAction,
     createDisabledPrevAction,
-    createDisabledNextAction} from '../../store/reduce/usersReduce';
+    createDisabledNextAction,
+    createLoadingAction} from '../../store/reduce/usersReduce';
 
 
 const mapStateToProps = (state) => {
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => {
         replacePage: state.usersPage.replacePage,
         disabledPrev: state.usersPage.disabledPrev,
         disabledNext: state.usersPage.disabledNext,
+        loading: state.usersPage.loading,
     }
 }
 
@@ -50,8 +52,12 @@ const mapDispatchToProps = (dispatch) => {
 
         setDisabledNext: (disabled) => {
             dispatch(createDisabledNextAction(disabled));
-        }
-        
+        },
+
+        setLoading: (loading) => {
+            dispatch(createLoadingAction(loading));
+        },
+
     }
 }
 

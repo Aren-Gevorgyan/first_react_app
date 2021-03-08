@@ -3,15 +3,17 @@ import UsersItem from "./usersItem/UsersItem";
 import style from './Users.module.css';
 import Paginator from './paginator/Paginator';
 import * as axios from 'axios';
+import Loading from '../../../utils/loading/Loading';
 
 class Users extends React.Component {
 
    componentDidMount(){
+      this.props.setLoading(true);
       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countUsers}`)
            .then(response => {
-         debugger
          this.props.usersData(response.data.items);
          this.props.setTotalCount(response.data.totalCount);
+         this.props.setLoading(false);
       })
    }
 
@@ -29,9 +31,13 @@ class Users extends React.Component {
       return usersItem;
    }
    render(){
+      
       return (
-         <div className={style.container}>
 
+         this.props.loading ? <Loading/> : 
+
+         <div className={style.container}>
+              
             <Paginator 
                totalCount={this.props.totalCount}
                countUsers={this.props.countUsers}
@@ -43,7 +49,9 @@ class Users extends React.Component {
                disabledPrev={this.props.disabledPrev}
                disabledNext={this.props.disabledNext}
                setDisabledPrev={this.props.setDisabledPrev}
-               setDisabledNext={this.props.setDisabledNext}/>
+               setDisabledNext={this.props.setDisabledNext}
+               loading={this.props.loading}
+               setLoading={this.props.setLoading}/>
 
             <div>
               <h3>Users</h3>
@@ -55,6 +63,7 @@ class Users extends React.Component {
             </div>
   
          </div>
+         
       )
    } 
 }

@@ -5,6 +5,7 @@ const CURRENT_PAGE_NUMBER = "CURRENT PAGE NUMBER";
 const NEW_PAGE_NUMBER = "NEW PAGE NUMBER";
 const DISABLED_NEXT = "DISABLED NEXT";
 const DISABLED_PREV = "DISABLED PREV";
+const LOADING = "LOADING";
 
 const initialState = {
     arrayUsers: [],
@@ -14,6 +15,7 @@ const initialState = {
     replacePage: { numberFirst: 1, numberSecond: 4 },
     disabledPrev: true,
     disabledNext: false,
+    loading: false,
 }
 
 const usersReduce = (state = initialState, action) => {
@@ -31,6 +33,8 @@ const usersReduce = (state = initialState, action) => {
             return {...state, currentPage: action.currentPageNumber }
         case NEW_PAGE_NUMBER:
             return {...state, replacePage: action.newPagesNumber }
+        case LOADING:
+            return {...state, loading: action.loading }
         case FOLLOW:
             let usersArrayCopy = state.arrayUsers.map(value => {
 
@@ -55,3 +59,4 @@ export const createCurrentPageNumberAction = (currentPageNumber) => ({ type: CUR
 export const createNewPagesAction = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
 export const createDisabledPrevAction = (disabled) => ({ type: DISABLED_PREV, disabled });
 export const createDisabledNextAction = (disabled) => ({ type: DISABLED_NEXT, disabled });
+export const createLoadingAction = (loading) => ({ type: LOADING, loading });

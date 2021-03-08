@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Paginator.module.css';
 import * as axios from 'axios';
+import Loading from '../../../../utils/loading/Loading';
 
 const Paginator = (props) => {
 
@@ -37,16 +38,18 @@ const Paginator = (props) => {
 
     }(pageFirst, pageSecond, countPage);
 
-    const getUsers = (p) => {
+    const getUsers = (p, props) => {
           //get new five users
+          props.setLoading(true)
           axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.countUsers}`).then(response => {
             props.usersData(response.data.items);
+            props.setLoading(false);
           })
           props.setCurrentPageNumber(p);
     }
       
     let numbersArray = countPageArray.map( page => {
-                          return <span onClick={()=> {getUsers(page)}} 
+                          return <span onClick={()=> {getUsers(page, props)}} 
                                        key={page}
                                        style={page === props.currentPage ? {color: "black", backgroundColor: "#9AC895"}: {}}>
                                        {page}
@@ -71,6 +74,7 @@ const Paginator = (props) => {
     }  
 
     return (
+         props.loading ? <Loading/> :
          <div className={style.container}>
            
             <div className={style.paginatorContainer}>
