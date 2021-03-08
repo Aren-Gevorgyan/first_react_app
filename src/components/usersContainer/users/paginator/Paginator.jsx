@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Paginator.module.css';
 import * as axios from 'axios';
-import Loading from '../../../../utils/loading/Loading';
+import Loading from '../../../common/loading/Loading';
 
 const Paginator = (props) => {
 

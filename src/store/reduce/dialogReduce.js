@@ -39,7 +39,7 @@ const dialogReduce = (state = initialState, action) => {
 
 }
 
-export const createActionAddMessages = () => ({ type: ADD_MESSAGES });
-export const createActionSetMessagesText = (newText) => ({ type: SET_NEW_MESSAGES_TEXT, newText });
+export const addMessages = () => ({ type: ADD_MESSAGES });
+export const upgradeMessagesText = (newText) => ({ type: SET_NEW_MESSAGES_TEXT, newText });
 
 export default dialogReduce;

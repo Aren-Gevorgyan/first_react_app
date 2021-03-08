@@ -34,7 +34,7 @@ const profileReduce = (state = initialState, action) => {
 
 }
 
-export const createActionAddPost = () => ({ type: ADD_POST });
-export const createActionSetPostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
+export const addPost = () => ({ type: ADD_POST });
+export const upgradePostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 
 export default profileReduce;

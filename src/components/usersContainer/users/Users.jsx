@@ -3,7 +3,7 @@ import UsersItem from "./usersItem/UsersItem";
 import style from './Users.module.css';
 import Paginator from './paginator/Paginator';
 import * as axios from 'axios';
-import Loading from '../../../utils/loading/Loading';
+import Loading from '../../common/loading/Loading';
 
 class Users extends React.Component {
 

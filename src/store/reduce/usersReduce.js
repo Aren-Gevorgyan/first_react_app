@@ -52,11 +52,11 @@ const usersReduce = (state = initialState, action) => {
 
 export default usersReduce;
 
-export const createFollowAction = (follow, currentId) => ({ type: FOLLOW, follow, currentId });
-export const createSetUsersAction = (usersData) => ({ type: SET_USERS, usersData });
-export const createTotalCountAction = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
-export const createCurrentPageNumberAction = (currentPageNumber) => ({ type: CURRENT_PAGE_NUMBER, currentPageNumber });
-export const createNewPagesAction = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
-export const createDisabledPrevAction = (disabled) => ({ type: DISABLED_PREV, disabled });
-export const createDisabledNextAction = (disabled) => ({ type: DISABLED_NEXT, disabled });
-export const createLoadingAction = (loading) => ({ type: LOADING, loading });
+export const following = (follow, currentId) => ({ type: FOLLOW, follow, currentId });
+export const usersData = (usersData) => ({ type: SET_USERS, usersData });
+export const setTotalCount = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
+export const setCurrentPageNumber = (currentPageNumber) => ({ type: CURRENT_PAGE_NUMBER, currentPageNumber });
+export const setNewPagesNumber = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
+export const setDisabledPrev = (disabled) => ({ type: DISABLED_PREV, disabled });
+export const setDisabledNext = (disabled) => ({ type: DISABLED_NEXT, disabled });
+export const setLoading = (loading) => ({ type: LOADING, loading });

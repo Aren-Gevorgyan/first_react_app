@@ -1,14 +1,8 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
 import {
-    createCurrentPageNumberAction,
-    createFollowAction,
-    createSetUsersAction,
-    createTotalCountAction,
-    createNewPagesAction,
-    createDisabledPrevAction,
-    createDisabledNextAction,
-    createLoadingAction} from '../../store/reduce/usersReduce';
+      following, setLoading, setNewPagesNumber, setCurrentPageNumber,
+      setDisabledPrev, setDisabledNext, usersData, setTotalCount} from '../../store/reduce/usersReduce';
 
 
 const mapStateToProps = (state) => {
@@ -24,43 +18,45 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        following: (follow, currentId) => {
-            dispatch(createFollowAction(follow, currentId));
-        },
+// const mapDispatchToProps = (dispatch) => {
+//     return{
+//         following: (follow, currentId) => {
+//             dispatch(createFollowAction(follow, currentId));
+//         },
 
-        usersData: (usersData) => {
-            dispatch(createSetUsersAction(usersData));
-        },
+//         usersData: (usersData) => {
+//             dispatch(createSetUsersAction(usersData));
+//         },
 
-        setTotalCount: (count) => {
-           dispatch(createTotalCountAction(count))
-        },
+//         setTotalCount: (count) => {
+//            dispatch(createTotalCountAction(count))
+//         },
 
-        setCurrentPageNumber: (p) => {
-            dispatch(createCurrentPageNumberAction(p));
-        },
+//         setCurrentPageNumber: (p) => {
+//             dispatch(createCurrentPageNumberAction(p));
+//         },
 
-        setNewPagesNumber: (numberObj) => {
-            dispatch(createNewPagesAction(numberObj));
-        },
+//         setNewPagesNumber: (numberObj) => {
+//             dispatch(createNewPagesAction(numberObj));
+//         },
 
-        setDisabledPrev: (disabled) => {
-            dispatch(createDisabledPrevAction(disabled));
-        },
+//         setDisabledPrev: (disabled) => {
+//             dispatch(createDisabledPrevAction(disabled));
+//         },
 
-        setDisabledNext: (disabled) => {
-            dispatch(createDisabledNextAction(disabled));
-        },
+//         setDisabledNext: (disabled) => {
+//             dispatch(createDisabledNextAction(disabled));
+//         },
 
-        setLoading: (loading) => {
-            dispatch(createLoadingAction(loading));
-        },
+//         setLoading: (loading) => {
+//             dispatch(createLoadingAction(loading));
+//         },
 
-    }
-}
+//     }
+// }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, 
+     {following, setLoading, setNewPagesNumber, setCurrentPageNumber,
+      setDisabledPrev, setDisabledNext, usersData, setTotalCount})(Users);
 
 export default UsersContainer;
