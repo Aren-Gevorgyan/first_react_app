@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import style from './index.module.css';
-import App from './components/app/App';
+import AppContainer from './components/appContainer/AppContainer';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
@@ -14,10 +14,10 @@ ReactDOM.render( <
     <
     Provider store = { store } >
     <
-    App / >
+    AppContainer / >
     <
-    /Provider>  <
-    /BrowserRouter >  <
+    /Provider>   <
+    /BrowserRouter > <
     /React.StrictMode>,
     document.getElementById('root')
 );

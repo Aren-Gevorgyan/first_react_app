@@ -11,15 +11,14 @@ class ProfileContainer extends React.Component{
 
     componentDidMount(){
         let userId =  this.props.match.params.userId;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!userId? 2 : userId}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!userId? this.props.userId : userId}`)
              .then(response => {
-              console.log(response);
               this.props.profileData(response.data);
         })
     }
 
     render(){
-        return !this.props.profile ? <Loading/> : 
+        return !this.props.profile? <Loading/> : 
                <Profile  {...this.props}/>      
     }
 }
@@ -29,6 +28,9 @@ const mapStateToProps=(state)=>{
          arrayPosts: state.profilePage.arrayPosts,
          newPostText: state.profilePage.newPostText,
          profile: state.profilePage.profile,
+         fullName: state.profilePage.fullName,
+         userId: state.auth.id,
+         ifAuth: state.auth.ifAuth,
     }
 }
 

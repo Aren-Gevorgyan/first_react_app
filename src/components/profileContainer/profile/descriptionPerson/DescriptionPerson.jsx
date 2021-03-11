@@ -12,7 +12,9 @@ const DescriptionPerson = (props)=>{
             alt="cover photo"/>
 
         <div className={style.description}>
+
            <img src={!props.profile.photos.large? defaultAvatar:props.profile.photos.large} className={style.avatar} alt="avatar"/>
+           
            <div className={style.aboutMy}>
               <h2>{props.profile.fullName}</h2>
               <dl>
