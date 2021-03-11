@@ -4,13 +4,14 @@ import Header from "./header/Header";
 import * as axios from 'axios';
 import Loading from "../common/loading/Loading";
 import {authProfileData} from '../../store/reduce/headerReduce';
+import {profileApi} from '../../dal/api';
 
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.userId}`, {withCredentials: true})
-                    .then(response => {
-                        this.props.authProfileData(response.data);        
+            profileApi.getProfile(this.props.userId)
+                    .then(data => {
+                        this.props.authProfileData(data);        
                     })
     }
 

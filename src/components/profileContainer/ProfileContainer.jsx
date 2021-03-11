@@ -5,15 +5,15 @@ import React from 'react';
 import * as axios from 'axios';
 import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
-
+import {profileApi} from '../../dal/api';
 
 class ProfileContainer extends React.Component{
 
     componentDidMount(){
         let userId =  this.props.match.params.userId;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${!userId? this.props.userId : userId}`, {withCredentials: true})
-             .then(response => {
-              this.props.profileData(response.data);
+        profileApi.getProfile(!userId? this.props.userId : userId)
+             .then(data => {
+              this.props.profileData(data);
         })
     }
 

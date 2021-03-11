@@ -1,18 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import App from './app/App';
-import * as axios from 'axios';
 import {setAuthData} from '../../store/reduce/authReduce';
 import Loading from "../common/loading/Loading";
+import {authApi} from '../../dal/api';
 
 class AppContainer extends React.Component{
 
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true})
-             .then(response => {
-
-             if(response.data.resultCode === 0){
-                this.props.setAuthData(response.data.data);
+        authApi.auth().then(data => {
+             if(data.resultCode === 0){
+                this.props.setAuthData(data.data);
              }
         })
     }

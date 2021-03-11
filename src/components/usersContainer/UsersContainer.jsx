@@ -1,9 +1,30 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
+import React from 'react';
+import {userApi} from '../../dal/api';
+
 import {
       following, setLoading, setNewPagesNumber, setCurrentPageNumber,
       setDisabledPrev, setDisabledNext, usersData, setTotalCount} from '../../store/reduce/usersReduce';
 
+class UsersContainer extends React.Component {
+
+        componentDidMount(){
+           this.props.setLoading(true);
+           userApi.getUsers(this.props.currentPage, this.props.countUsers)
+                .then(data => {
+              this.props.usersData(data.items);
+              this.props.setTotalCount(data.totalCount);
+              this.props.setLoading(false);
+           })
+        
+        }
+
+        render(){
+            return <Users {...this.props}/>
+        }
+}     
+  
 
 const mapStateToProps = (state) => {
     return{
@@ -18,45 +39,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return{
-//         following: (follow, currentId) => {
-//             dispatch(createFollowAction(follow, currentId));
-//         },
-
-//         usersData: (usersData) => {
-//             dispatch(createSetUsersAction(usersData));
-//         },
-
-//         setTotalCount: (count) => {
-//            dispatch(createTotalCountAction(count))
-//         },
-
-//         setCurrentPageNumber: (p) => {
-//             dispatch(createCurrentPageNumberAction(p));
-//         },
-
-//         setNewPagesNumber: (numberObj) => {
-//             dispatch(createNewPagesAction(numberObj));
-//         },
-
-//         setDisabledPrev: (disabled) => {
-//             dispatch(createDisabledPrevAction(disabled));
-//         },
-
-//         setDisabledNext: (disabled) => {
-//             dispatch(createDisabledNextAction(disabled));
-//         },
-
-//         setLoading: (loading) => {
-//             dispatch(createLoadingAction(loading));
-//         },
-
-//     }
-// }
-
-const UsersContainer = connect(mapStateToProps, 
+export default connect(mapStateToProps, 
      {following, setLoading, setNewPagesNumber, setCurrentPageNumber,
-      setDisabledPrev, setDisabledNext, usersData, setTotalCount})(Users);
+      setDisabledPrev, setDisabledNext, usersData, setTotalCount})(UsersContainer);
 
-export default UsersContainer;
