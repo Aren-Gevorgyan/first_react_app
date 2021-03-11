@@ -9,7 +9,7 @@ class Users extends React.Component {
 
    componentDidMount(){
       this.props.setLoading(true);
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countUsers}`)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countUsers}`, {withCredentials: true})
            .then(response => {
          this.props.usersData(response.data.items);
          this.props.setTotalCount(response.data.totalCount);

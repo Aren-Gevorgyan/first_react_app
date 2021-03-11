@@ -2,6 +2,7 @@ import React from 'react';
 import style from './UsersItem.module.css';
 import defaultAvatar from '.././../../../assets/images/default_avatar.png';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
 
 const UsersItem = (props) => {
     
@@ -32,9 +33,33 @@ const UsersItem = (props) => {
 
             </div>
             
-            <button onClick={()=>props.following(!props.follow, props.id)} className={style.follow}>
+            <button onClick={()=>{
+               
+                       props.follow ? 
+                       axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
+                             withCredentials: true,
+                             headers: {"API-KEY" : "0e0c695e-f307-4053-b6f2-d2bee079a661"}
+                             })
+                              .then(response => {
+                                if(response.data.resultCode === 0){
+                                   props.following(!props.follow, props.id);
+                              }
+                       })
+                       :
+                       axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
+                             withCredentials: true,
+                             headers: {"API-KEY" : "0e0c695e-f307-4053-b6f2-d2bee079a661"}
+                             })
+                               .then(response => {
+                                  if(response.data.resultCode === 0){
+                                      props.following(!props.follow, props.id);
+                                  }
+                               })                     
 
-              {props.follow ? "Follow" : "Unfollow"}
+                     }}
+
+               className={style.follow}>
+               {props.follow ? "Follow" : "Unfollow"}
 
             </button>
 

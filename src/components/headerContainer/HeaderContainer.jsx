@@ -8,7 +8,7 @@ import {authProfileData} from '../../store/reduce/headerReduce';
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.userId}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.userId}`, {withCredentials: true})
                     .then(response => {
                         this.props.authProfileData(response.data);        
                     })

@@ -41,7 +41,7 @@ const Paginator = (props) => {
     const getUsers = (p, props) => {
           //get new five users
           props.setLoading(true)
-          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.countUsers}`).then(response => {
+          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${props.countUsers}`, {withCredentials:true}).then(response => {
             props.usersData(response.data.items);
             props.setLoading(false);
           })

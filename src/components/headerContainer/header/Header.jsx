@@ -3,7 +3,6 @@ import style from './Header.module.css';
 import defaultAvatar from '../../../assets/images/default_avatar.png';
 
 const Header = (props)=>{
-   console.log(props)
    return( 
       <header>
          
