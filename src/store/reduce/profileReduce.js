@@ -35,7 +35,6 @@ const profileReduce = (state = initialState, action) => {
         default:
             return state;
     }
-
 }
 
 export const addPost = () => ({ type: ADD_POST });

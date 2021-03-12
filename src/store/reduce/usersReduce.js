@@ -6,6 +6,7 @@ const NEW_PAGE_NUMBER = "NEW PAGE NUMBER";
 const DISABLED_NEXT = "DISABLED NEXT";
 const DISABLED_PREV = "DISABLED PREV";
 const LOADING = "LOADING";
+const FOLLOW_DISABLED = "FOLLOW DISABLED";
 
 const initialState = {
     arrayUsers: [],
@@ -16,9 +17,11 @@ const initialState = {
     disabledPrev: true,
     disabledNext: false,
     loading: false,
+    disabledFollowButton: [],
 }
 
 const usersReduce = (state = initialState, action) => {
+
     switch (action.type) {
         case SET_USERS:
             //deepened copy
@@ -29,6 +32,10 @@ const usersReduce = (state = initialState, action) => {
             return {...state, disabledPrev: action.disabled }
         case DISABLED_NEXT:
             return {...state, disabledNext: action.disabled }
+        case FOLLOW_DISABLED:
+            return {...state,
+                disabledFollowButton: action.disabled ? [...state.disabledFollowButton, action.userId] : state.disabledFollowButton.filter(id => id !== action.userId)
+            }
         case CURRENT_PAGE_NUMBER:
             return {...state, currentPage: action.currentPageNumber }
         case NEW_PAGE_NUMBER:
@@ -59,4 +66,5 @@ export const setCurrentPageNumber = (currentPageNumber) => ({ type: CURRENT_PAGE
 export const setNewPagesNumber = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
 export const setDisabledPrev = (disabled) => ({ type: DISABLED_PREV, disabled });
 export const setDisabledNext = (disabled) => ({ type: DISABLED_NEXT, disabled });
+export const setFollowDisabled = (disabled, userId) => ({ type: FOLLOW_DISABLED, disabled, userId });
 export const setLoading = (loading) => ({ type: LOADING, loading });

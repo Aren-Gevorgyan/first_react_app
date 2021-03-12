@@ -5,7 +5,8 @@ import {userApi} from '../../dal/api';
 
 import {
       following, setLoading, setNewPagesNumber, setCurrentPageNumber,
-      setDisabledPrev, setDisabledNext, usersData, setTotalCount} from '../../store/reduce/usersReduce';
+      setDisabledPrev, setDisabledNext, usersData, setTotalCount,
+      setFollowDisabled} from '../../store/reduce/usersReduce';
 
 class UsersContainer extends React.Component {
 
@@ -35,11 +36,13 @@ const mapStateToProps = (state) => {
         replacePage: state.usersPage.replacePage,
         disabledPrev: state.usersPage.disabledPrev,
         disabledNext: state.usersPage.disabledNext,
+        disabledFollowButton: state.usersPage.disabledFollowButton,
         loading: state.usersPage.loading,
     }
 }
 
 export default connect(mapStateToProps, 
      {following, setLoading, setNewPagesNumber, setCurrentPageNumber,
-      setDisabledPrev, setDisabledNext, usersData, setTotalCount})(UsersContainer);
+      setDisabledPrev, setDisabledNext, usersData, setTotalCount,
+      setFollowDisabled})(UsersContainer);
 

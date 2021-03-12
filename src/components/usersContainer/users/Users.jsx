@@ -15,7 +15,9 @@ const Users = (props) => {
                    photo={value.photo}
                    status={value.status}
                    follow={value.followed}
-                   following={props.following}/>
+                   following={props.following}
+                   disabledFollowButton={props.disabledFollowButton}
+                   setFollowDisabled={props.setFollowDisabled}/>
       })
 
       return (

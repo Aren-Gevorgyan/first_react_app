@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import {followApi} from '../../../../dal/api';
 
 const UsersItem = (props) => {
-    
-    return (
+
+   return (
          <div className={style.container}>
 
             <div className={style.usersContainer}> 
@@ -34,23 +34,28 @@ const UsersItem = (props) => {
             </div>
             
             <button onClick={()=>{
-               
-                       props.follow ? 
+                       if(props.follow) {
                        
-                       followApi.followDelete(props.id).then(data => {
+                         props.setFollowDisabled(true, props.id);                            
+                         followApi.followDelete(props.id).then(data => {
                                 if(data.resultCode === 0){
                                    props.following(!props.follow, props.id);
+                                   props.setFollowDisabled(false, props.id);                            
                               }
-                       })
-                       :
-                       followApi.followed(props.id).then(data => {
-                                  if(data.resultCode === 0){
-                                      props.following(!props.follow, props.id);
+                         })
+                       
+                        }else{
+                           props.setFollowDisabled(true, props.id);                            
+                           followApi.followed(props.id).then(data => {
+                                     if(data.resultCode === 0){
+                                        props.following(!props.follow, props.id);
+                                        props.setFollowDisabled(false, props.id);                            
+                                     }
+                                   })
                                   }
-                               })                     
-
-                     }}
-
+                        }                                        
+                     }
+               disabled={props.disabledFollowButton.some(id => id === props.id)}
                className={style.follow}>
                {props.follow ? "Follow" : "Unfollow"}
 
