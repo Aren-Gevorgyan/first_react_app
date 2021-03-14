@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import React from 'react';
 import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
+import {Redirect} from 'react-router-dom';
 
 class ProfileContainer extends React.Component{
 
@@ -13,8 +14,11 @@ class ProfileContainer extends React.Component{
     }
 
     render(){
-        return !this.props.profile? <Loading/> : 
-               <Profile  {...this.props}/>      
+        return this.props.ifAuth?  
+        !this.props.profile? <Loading/> : 
+               <Profile  {...this.props}/>
+               :
+               <Redirect to='/login'/>      
     }
 }
 
