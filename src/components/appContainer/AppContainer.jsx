@@ -1,18 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import App from './app/App';
-import {setAuthData} from '../../store/reduce/authReduce';
+import {authThunk} from '../../store/reduce/authReduce';
 import Loading from "../common/loading/Loading";
-import {authApi} from '../../dal/api';
 
 class AppContainer extends React.Component{
 
     componentDidMount(){
-        authApi.auth().then(data => {
-             if(data.resultCode === 0){
-                this.props.setAuthData(data.data);
-             }
-        })
+       this.props.authThunk();
     }
 
     render(){
@@ -29,4 +24,4 @@ const mapStateToProps = (state) => {
       }
 }
 
-export default connect(mapStateToProps, {setAuthData})(AppContainer);
+export default connect(mapStateToProps, {authThunk})(AppContainer);

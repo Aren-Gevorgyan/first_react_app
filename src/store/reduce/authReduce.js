@@ -1,3 +1,5 @@
+import { authApi } from '../../dal/api';
+
 const AUTH = "AUTH";
 
 const initialState = {
@@ -18,6 +20,16 @@ const authReduce = (state = initialState, action) => {
 
 }
 
-export const setAuthData = (data) => ({ type: AUTH, data });
-
 export default authReduce;
+
+const setAuthData = (data) => ({ type: AUTH, data });
+
+export const authThunk = () => {
+    return (dispatch) => {
+        authApi.auth().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthData(data.data));
+            }
+        })
+    }
+}
