@@ -4,7 +4,6 @@ import defaultAvatar from '.././../../../assets/images/default_avatar.png';
 import { NavLink } from 'react-router-dom';
 
 const UsersItem = (props) => {
-   console.log(props)
 
    return (
          <div className={style.container}>
@@ -34,28 +33,10 @@ const UsersItem = (props) => {
             </div>
             
             <button onClick={()=>{
-                       if(props.follow) {
-                       
-                        //  props.setFollowDisabled(true, props.id);                            
-                        //  followApi.followDelete(props.id).then(data => {
-                        //         if(data.resultCode === 0){
-                        //            props.following(!props.follow, props.id);
-                        //            props.setFollowDisabled(false, props.id);                            
-                        //       }
-                        //  })
-                        props.unFollowThunk(props.id, props.follow);
-                       
-                        }else{
-
-                           props.followThunk(props.id, props.follow);
-                           // props.setFollowDisabled(true, props.id);                            
-                           // followApi.followed(props.id).then(data => {
-                           //           if(data.resultCode === 0){
-                           //              props.following(!props.follow, props.id);
-                           //              props.setFollowDisabled(false, props.id);                            
-                           //           }
-                           //         })
-                                  }
+                        props.follow? 
+                        props.unFollowThunk(props.id, props.follow)
+                        :
+                        props.followThunk(props.id, props.follow);
                         }                                        
                      }
                disabled={props.disabledFollowButton.some(id => id === props.id)}

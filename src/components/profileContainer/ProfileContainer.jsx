@@ -1,20 +1,15 @@
-import {addPost, upgradePostText, profileData} from "../../store/reduce/profileReduce";
+import {addPost, upgradePostText, getProfileThunk} from "../../store/reduce/profileReduce";
 import Profile from './profile/Profile';
 import {connect} from 'react-redux';
 import React from 'react';
-import * as axios from 'axios';
 import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
-import {profileApi} from '../../dal/api';
 
 class ProfileContainer extends React.Component{
 
     componentDidMount(){
         let userId =  this.props.match.params.userId;
-        profileApi.getProfile(!userId? this.props.userId : userId)
-             .then(data => {
-              this.props.profileData(data);
-        })
+        this.props.getProfileThunk(userId, this.props.userId)
     }
 
     render(){
@@ -47,4 +42,4 @@ const mapStateToProps=(state)=>{
 
 const WithRProfileComponent = withRouter(ProfileContainer);
  
-export default connect(mapStateToProps, {addPost, upgradePostText, profileData})(WithRProfileComponent);
+export default connect(mapStateToProps, {addPost, upgradePostText, getProfileThunk})(WithRProfileComponent);

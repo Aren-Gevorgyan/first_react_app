@@ -1,4 +1,4 @@
-import { followApi } from '../../dal/api';
+import { userApi } from '../../dal/api';
 
 
 const FOLLOW = "FOLLOW";
@@ -63,19 +63,31 @@ const usersReduce = (state = initialState, action) => {
 export default usersReduce;
 
 const following = (follow, currentId) => ({ type: FOLLOW, follow, currentId });
-export const usersData = (usersData) => ({ type: SET_USERS, usersData });
-export const setTotalCount = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
+const usersData = (usersData) => ({ type: SET_USERS, usersData });
+const setTotalCount = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
 export const setCurrentPageNumber = (currentPageNumber) => ({ type: CURRENT_PAGE_NUMBER, currentPageNumber });
 export const setNewPagesNumber = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
 export const setDisabledPrev = (disabled) => ({ type: DISABLED_PREV, disabled });
 export const setDisabledNext = (disabled) => ({ type: DISABLED_NEXT, disabled });
 const setFollowDisabled = (disabled, userId) => ({ type: FOLLOW_DISABLED, disabled, userId });
-export const setLoading = (loading) => ({ type: LOADING, loading });
+const setLoading = (loading) => ({ type: LOADING, loading });
 
+
+export const getUsersThunk = (currentPage, countUsers) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        userApi.getUsers(currentPage, countUsers)
+            .then(data => {
+                dispatch(usersData(data.items));
+                dispatch(setTotalCount(data.totalCount));
+                dispatch(setLoading(false));
+            })
+    }
+}
 export const followThunk = (id, follow) => {
     return (dispatch) => {
         dispatch(setFollowDisabled(true, id));
-        followApi.followed(id).then(data => {
+        userApi.followed(id).then(data => {
             if (data.resultCode === 0) {
                 dispatch(following(!follow, id));
                 dispatch(setFollowDisabled(false, id));
@@ -87,7 +99,7 @@ export const followThunk = (id, follow) => {
 export const unFollowThunk = (id, follow) => {
     return (dispatch) => {
         dispatch(setFollowDisabled(true, id));
-        followApi.followDelete(id).then(data => {
+        userApi.followDelete(id).then(data => {
             if (data.resultCode === 0) {
                 dispatch(following(!follow, id));
                 dispatch(setFollowDisabled(false, id));

@@ -1,3 +1,5 @@
+import { profileApi } from '../../dal/api';
+
 const ADD_POST = "ADD_POST";
 const SET_NEW_POST_TEXT = "SET_NEW_POST_TEXT";
 const PROFILE = "PROFILE";
@@ -39,6 +41,15 @@ const profileReduce = (state = initialState, action) => {
 
 export const addPost = () => ({ type: ADD_POST });
 export const upgradePostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
-export const profileData = (profileData) => ({ type: PROFILE, profileData })
+const profileData = (profileData) => ({ type: PROFILE, profileData });
 
 export default profileReduce;
+
+export const getProfileThunk = (userId, myId) => {
+    return (dispatch) => {
+        profileApi.getProfile(userId ? userId : myId)
+            .then(data => {
+                dispatch(profileData(data));
+            })
+    }
+}

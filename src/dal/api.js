@@ -26,13 +26,10 @@ const followed = (userId) => {
     return instanceAxios.post(`follow/${userId}`, {}).then(response => response.data)
 }
 
-export const followApi = {
+export const userApi = {
+    getUsers,
     followDelete,
     followed,
-}
-
-export const userApi = {
-    getUsers
 }
 
 export const profileApi = {

@@ -1,31 +1,22 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
 import React from 'react';
-import {userApi} from '../../dal/api';
 
 import {
-      setLoading, setNewPagesNumber, setCurrentPageNumber,
-      setDisabledPrev, setDisabledNext, usersData, setTotalCount,
-      followThunk, unFollowThunk} from '../../store/reduce/usersReduce';
+      setNewPagesNumber, setCurrentPageNumber,
+      setDisabledPrev, setDisabledNext,
+      followThunk, unFollowThunk, getUsersThunk} from '../../store/reduce/usersReduce';
 
 class UsersContainer extends React.Component {
 
         componentDidMount(){
-           this.props.setLoading(true);
-           userApi.getUsers(this.props.currentPage, this.props.countUsers)
-                .then(data => {
-              this.props.usersData(data.items);
-              this.props.setTotalCount(data.totalCount);
-              this.props.setLoading(false);
-           })
-        
+          this.props.getUsersThunk(this.props.currentPage, this.props.countUsers);
         }
 
         render(){
             return <Users {...this.props}/>
         }
 }     
-  
 
 const mapStateToProps = (state) => {
     return{
@@ -42,8 +33,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, 
-     {setLoading, setNewPagesNumber, setCurrentPageNumber, 
-      setDisabledPrev, setDisabledNext, usersData, setTotalCount,
+     {setNewPagesNumber, setCurrentPageNumber, 
+      setDisabledPrev, setDisabledNext, getUsersThunk,
       followThunk, unFollowThunk,
      })(UsersContainer);
 
