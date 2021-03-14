@@ -1,18 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import Header from "./header/Header";
-import * as axios from 'axios';
 import Loading from "../common/loading/Loading";
-import {authProfileData} from '../../store/reduce/headerReduce';
-import {profileApi} from '../../dal/api';
+import {authProfileThunk} from '../../store/reduce/headerReduce';
 
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-            profileApi.getProfile(this.props.userId)
-                    .then(data => {
-                        this.props.authProfileData(data);        
-                    })
+            this.props.authProfileThunk(this.props.userId);
     }
 
     render(){
@@ -27,4 +22,4 @@ const mapStateToProps = (state) => {
    }
 }
 
-export default connect(mapStateToProps, {authProfileData})(HeaderContainer);
+export default connect(mapStateToProps, {authProfileThunk})(HeaderContainer);
