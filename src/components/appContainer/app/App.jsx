@@ -8,9 +8,9 @@ import News from '../../news/News';
 import Music from '../../music/Music';
 import Settings from '../../settings/Settings';
 import { Route } from 'react-router-dom';
+import LoginContainer from '../../loginContainer/LoginContainer';
 
 const App = (props) => {
-  
     return ( 
 
       <div className={style.container}>
@@ -30,6 +30,10 @@ const App = (props) => {
 
           <Route path='/users'>
             <UsersContainer/>
+          </Route>
+          
+          <Route path='/login'>
+            <LoginContainer/>
           </Route>
 
           <Route path='/news'><News/></Route>

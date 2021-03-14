@@ -9,8 +9,8 @@ const Header = (props)=>{
           <img src="https://www.pngitem.com/pimgs/m/98-980820_all-natural-100-vg-logo-hoja-hd-png.png" alt="logo"/>
 
           <div className={style.userData}>
-             <img src={!props.profile.photos.large? defaultAvatar: props.profile.photos.large} alt="userPhoto"/>
-             <h2>{props.profile.fullName}</h2>
+             <img src={!props.profile? defaultAvatar: props.profile.photos.large} alt="userPhoto"/>
+             <h2>{!props.profile? "login" : props.profile.fullName}</h2>
           </div>
 
       </header>

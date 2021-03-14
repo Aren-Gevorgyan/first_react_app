@@ -4,9 +4,10 @@ const initialState = [
     { id: "3", name: "Find users", path: "users" },
     { id: "4", name: "News", path: "news" },
     { id: "5", name: "Music", path: "music" },
-    { id: "6", name: "Settings", path: "settings" },
+    { id: "6", name: "Login", path: "login" },
+    { id: "7", name: "Settings", path: "settings" },
     {
-        id: "7",
+        id: "8",
         name: "Friends",
         path: "friends",
         friends: [

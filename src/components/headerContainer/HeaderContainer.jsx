@@ -2,16 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import Header from "./header/Header";
 import Loading from "../common/loading/Loading";
-import {authProfileThunk} from '../../store/reduce/headerReduce';
+import {authThunk} from '../../store/reduce/authReduce';
 
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-            this.props.authProfileThunk(this.props.userId);
+            this.props.authThunk();
     }
 
     render(){
-        return !this.props.profile? <Loading/> : < Header {...this.props}/>
+        return < Header {...this.props}/>
     }
 }
 
@@ -22,4 +22,4 @@ const mapStateToProps = (state) => {
    }
 }
 
-export default connect(mapStateToProps, {authProfileThunk})(HeaderContainer);
+export default connect(mapStateToProps, {authThunk})(HeaderContainer);
