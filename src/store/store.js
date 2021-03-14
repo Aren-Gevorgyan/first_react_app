@@ -3,8 +3,9 @@ import dialogReduce from './reduce/dialogReduce';
 import navbarReduce from './reduce/navbarReduce';
 import usersReduce from './reduce/usersReduce';
 import authReduce from './reduce/authReduce';
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import headerReduce from './reduce/headerReduce';
+import middleware from 'redux-thunk';
 
 const reducers = combineReducers({
     header: headerReduce,
@@ -15,6 +16,6 @@ const reducers = combineReducers({
     auth: authReduce,
 })
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(middleware));
 window.store = store;
 export default store;

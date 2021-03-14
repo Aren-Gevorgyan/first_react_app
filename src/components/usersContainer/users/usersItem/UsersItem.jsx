@@ -2,9 +2,9 @@ import React from 'react';
 import style from './UsersItem.module.css';
 import defaultAvatar from '.././../../../assets/images/default_avatar.png';
 import { NavLink } from 'react-router-dom';
-import {followApi} from '../../../../dal/api';
 
 const UsersItem = (props) => {
+   console.log(props)
 
    return (
          <div className={style.container}>
@@ -36,22 +36,25 @@ const UsersItem = (props) => {
             <button onClick={()=>{
                        if(props.follow) {
                        
-                         props.setFollowDisabled(true, props.id);                            
-                         followApi.followDelete(props.id).then(data => {
-                                if(data.resultCode === 0){
-                                   props.following(!props.follow, props.id);
-                                   props.setFollowDisabled(false, props.id);                            
-                              }
-                         })
+                        //  props.setFollowDisabled(true, props.id);                            
+                        //  followApi.followDelete(props.id).then(data => {
+                        //         if(data.resultCode === 0){
+                        //            props.following(!props.follow, props.id);
+                        //            props.setFollowDisabled(false, props.id);                            
+                        //       }
+                        //  })
+                        props.unFollowThunk(props.id, props.follow);
                        
                         }else{
-                           props.setFollowDisabled(true, props.id);                            
-                           followApi.followed(props.id).then(data => {
-                                     if(data.resultCode === 0){
-                                        props.following(!props.follow, props.id);
-                                        props.setFollowDisabled(false, props.id);                            
-                                     }
-                                   })
+
+                           props.followThunk(props.id, props.follow);
+                           // props.setFollowDisabled(true, props.id);                            
+                           // followApi.followed(props.id).then(data => {
+                           //           if(data.resultCode === 0){
+                           //              props.following(!props.follow, props.id);
+                           //              props.setFollowDisabled(false, props.id);                            
+                           //           }
+                           //         })
                                   }
                         }                                        
                      }

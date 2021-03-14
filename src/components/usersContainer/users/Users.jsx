@@ -6,7 +6,6 @@ import Loading from '../../common/loading/Loading';
 
 const Users = (props) => {
 
-
       let usersItem = props.arrayUsers.map(value => {
          return <UsersItem 
                    key={value.id} 
@@ -15,9 +14,10 @@ const Users = (props) => {
                    photo={value.photo}
                    status={value.status}
                    follow={value.followed}
-                   following={props.following}
                    disabledFollowButton={props.disabledFollowButton}
-                   setFollowDisabled={props.setFollowDisabled}/>
+                   followThunk={props.followThunk}
+                   unFollowThunk={props.unFollowThunk}
+                   />
       })
 
       return (

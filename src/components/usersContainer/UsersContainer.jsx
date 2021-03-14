@@ -4,9 +4,9 @@ import React from 'react';
 import {userApi} from '../../dal/api';
 
 import {
-      following, setLoading, setNewPagesNumber, setCurrentPageNumber,
+      setLoading, setNewPagesNumber, setCurrentPageNumber,
       setDisabledPrev, setDisabledNext, usersData, setTotalCount,
-      setFollowDisabled} from '../../store/reduce/usersReduce';
+      followThunk, unFollowThunk} from '../../store/reduce/usersReduce';
 
 class UsersContainer extends React.Component {
 
@@ -42,7 +42,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, 
-     {following, setLoading, setNewPagesNumber, setCurrentPageNumber,
+     {setLoading, setNewPagesNumber, setCurrentPageNumber, 
       setDisabledPrev, setDisabledNext, usersData, setTotalCount,
-      setFollowDisabled})(UsersContainer);
+      followThunk, unFollowThunk,
+     })(UsersContainer);
 
