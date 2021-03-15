@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import Users from "./users/Users";
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import withRedirect from '../hoc/withRedirect';
 
 import {
       setNewPagesNumber, setDisabledPrev, setDisabledNext,
       followThunk, unFollowThunk, getUsersThunk, getNewUsersThunk} from '../../store/reduce/usersReduce';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
 
@@ -33,11 +33,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const WithRedirectUsersContainer = withRedirect(UsersContainer); 
-
-export default connect(mapStateToProps, 
-     {setNewPagesNumber, setDisabledPrev, setDisabledNext,
-      getUsersThunk, followThunk, unFollowThunk,
-      getNewUsersThunk
-     })(WithRedirectUsersContainer);
+export default compose(
+    withRedirect,
+    connect(mapStateToProps, 
+    {setNewPagesNumber, setDisabledPrev, setDisabledNext,
+     getUsersThunk, followThunk, unFollowThunk,
+     getNewUsersThunk
+    }))(UsersContainer);
 

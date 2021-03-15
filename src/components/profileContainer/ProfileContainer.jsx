@@ -5,6 +5,7 @@ import React from 'react';
 import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
 import withRedirect from '../hoc/withRedirect';
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component{
 
@@ -38,9 +39,8 @@ const mapStateToProps=(state)=>{
 //         },
 //     }
 // }
-
-const WithRedirect = withRedirect(ProfileContainer);
-
-const WithRProfileComponent = withRouter(WithRedirect);
  
-export default connect(mapStateToProps, {addPost, upgradePostText, getProfileThunk})(WithRProfileComponent);
+export default compose(
+    connect(mapStateToProps, {addPost, upgradePostText, getProfileThunk}),
+    withRouter,
+    withRedirect)(ProfileContainer);

@@ -3,6 +3,7 @@ import Dialogs from './dialogs/Dialogs';
 import {connect} from 'react-redux';
 import React from 'react';
 import withRedirect from '../hoc/withRedirect';
+import { compose } from "redux";
 
 class DialogsContainer extends React.Component{
     render (){
@@ -31,6 +32,7 @@ const mapStateToProps = (state) => {
 //     }
 // }
 
-const WithRouterDialogsContainer = withRedirect(DialogsContainer);
-
-export default connect(mapStateToProps, {addMessages, upgradeMessagesText})(WithRouterDialogsContainer);
+export default compose(
+    withRedirect,
+    connect(mapStateToProps, {addMessages, upgradeMessagesText}),
+)(DialogsContainer);
