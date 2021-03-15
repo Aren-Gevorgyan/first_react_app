@@ -7,7 +7,7 @@ import {authThunk} from '../../store/reduce/authReduce';
 class HeaderContainer extends React.Component{
 
     componentDidMount(){
-            this.props.authThunk();
+            // this.props.authThunk();
     }
 
     render(){

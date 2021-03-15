@@ -26,10 +26,15 @@ const followed = (userId) => {
     return instanceAxios.post(`follow/${userId}`, {}).then(response => response.data)
 }
 
+const getNewUsers = (p, countUsers) => {
+    return instanceAxios.get(`users?page=${p}&count=${countUsers}`);
+}
+
 export const userApi = {
     getUsers,
     followDelete,
     followed,
+    getNewUsers,
 }
 
 export const profileApi = {

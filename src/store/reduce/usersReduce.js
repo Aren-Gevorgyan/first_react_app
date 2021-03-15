@@ -65,7 +65,7 @@ export default usersReduce;
 const following = (follow, currentId) => ({ type: FOLLOW, follow, currentId });
 const usersData = (usersData) => ({ type: SET_USERS, usersData });
 const setTotalCount = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
-export const setCurrentPageNumber = (currentPageNumber) => ({ type: CURRENT_PAGE_NUMBER, currentPageNumber });
+const setCurrentPageNumber = (currentPageNumber) => ({ type: CURRENT_PAGE_NUMBER, currentPageNumber });
 export const setNewPagesNumber = (newPagesNumber) => ({ type: NEW_PAGE_NUMBER, newPagesNumber });
 export const setDisabledPrev = (disabled) => ({ type: DISABLED_PREV, disabled });
 export const setDisabledNext = (disabled) => ({ type: DISABLED_NEXT, disabled });
@@ -105,5 +105,16 @@ export const unFollowThunk = (id, follow) => {
                 dispatch(setFollowDisabled(false, id));
             }
         })
+    }
+}
+
+export const getNewUsersThunk = (p, countUsers) => {
+    return (dispatch) => {
+        dispatch(setLoading(true));
+        userApi.getNewUsers(p, countUsers).then(response => {
+            dispatch(usersData(response.data.items));
+            dispatch(setLoading(false));
+        })
+        dispatch(setCurrentPageNumber(p));
     }
 }

@@ -27,11 +27,11 @@ const Users = (props) => {
          <div className={style.container}>
               
             <Paginator 
+               getNewUsersThunk={props.getNewUsersThunk}
                totalCount={props.totalCount}
                countUsers={props.countUsers}
                currentPage={props.currentPage}
                usersData={props.usersData}
-               setCurrentPageNumber={props.setCurrentPageNumber}
                replacePage={props.replacePage}
                setNewPagesNumber={props.setNewPagesNumber}
                disabledPrev={props.disabledPrev}

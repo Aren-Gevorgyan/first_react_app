@@ -4,9 +4,8 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 
 import {
-      setNewPagesNumber, setCurrentPageNumber,
-      setDisabledPrev, setDisabledNext,
-      followThunk, unFollowThunk, getUsersThunk} from '../../store/reduce/usersReduce';
+      setNewPagesNumber, setDisabledPrev, setDisabledNext,
+      followThunk, unFollowThunk, getUsersThunk, getNewUsersThunk} from '../../store/reduce/usersReduce';
 
 class UsersContainer extends React.Component {
 
@@ -38,8 +37,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, 
-     {setNewPagesNumber, setCurrentPageNumber, 
-      setDisabledPrev, setDisabledNext, getUsersThunk,
-      followThunk, unFollowThunk,
+     {setNewPagesNumber, setDisabledPrev, setDisabledNext,
+      getUsersThunk, followThunk, unFollowThunk,
+      getNewUsersThunk
      })(UsersContainer);
 
