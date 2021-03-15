@@ -2,15 +2,11 @@ import {addMessages, upgradeMessagesText} from "../../store/reduce/dialogReduce"
 import Dialogs from './dialogs/Dialogs';
 import {connect} from 'react-redux';
 import React from 'react';
-import {Redirect} from 'react-router-dom';
-
+import withRedirect from '../hoc/withRedirect';
 
 class DialogsContainer extends React.Component{
     render (){
-        return this.props.ifAuth? 
-        <Dialogs {...this.props}/>
-        :
-        <Redirect to='/login'/>
+        return <Dialogs {...this.props}/>
     }
 }
 
@@ -33,6 +29,8 @@ const mapStateToProps = (state) => {
 //              dispatch(createActionSetMessagesText(text))
 //         }
 //     }
-// } 
+// }
 
-export default connect(mapStateToProps, {addMessages, upgradeMessagesText})(DialogsContainer);
+const WithRouterDialogsContainer = withRedirect(DialogsContainer);
+
+export default connect(mapStateToProps, {addMessages, upgradeMessagesText})(WithRouterDialogsContainer);

@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import Users from "./users/Users";
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import withRedirect from '../hoc/withRedirect';
 
 import {
       setNewPagesNumber, setDisabledPrev, setDisabledNext,
@@ -14,10 +15,7 @@ class UsersContainer extends React.Component {
         }
 
         render(){
-            return this.props.ifAuth? 
-            <Users {...this.props}/>
-            :
-            <Redirect to='/login'/>
+            return <Users {...this.props}/>
         }
 }     
 
@@ -32,13 +30,14 @@ const mapStateToProps = (state) => {
         disabledNext: state.usersPage.disabledNext,
         disabledFollowButton: state.usersPage.disabledFollowButton,
         loading: state.usersPage.loading,
-        ifAuth: state.auth.ifAuth,
     }
 }
+
+const WithRedirectUsersContainer = withRedirect(UsersContainer); 
 
 export default connect(mapStateToProps, 
      {setNewPagesNumber, setDisabledPrev, setDisabledNext,
       getUsersThunk, followThunk, unFollowThunk,
       getNewUsersThunk
-     })(UsersContainer);
+     })(WithRedirectUsersContainer);
 
