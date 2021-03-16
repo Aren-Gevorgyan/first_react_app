@@ -1,0 +1,30 @@
+.container {
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+.container span {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.container input {
+    height: 13px;
+    font-size: 8px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.container button {
+    height: 16px;
+    font-size: 8px;
+    border-radius: 2px;
+    border: 1px solid gray;
+    outline: none;
+    margin-left: 4px;
+}
+
+.container button:hover {
+    background-color: gray;
+}
