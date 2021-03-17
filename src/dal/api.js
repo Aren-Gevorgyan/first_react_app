@@ -30,6 +30,15 @@ const getNewUsers = (p, countUsers) => {
     return instanceAxios.get(`users?page=${p}&count=${countUsers}`);
 }
 
+const getStatus = (userId, myId) => {
+    const id = !userId ? myId : userId;
+    return instanceAxios.get(`profile/status/${id}`).then(response => response.data);
+}
+
+const setStatus = (status) => {
+    return instanceAxios.put(`profile/status`, { status });
+}
+
 export const userApi = {
     getUsers,
     followDelete,
@@ -39,6 +48,8 @@ export const userApi = {
 
 export const profileApi = {
     getProfile,
+    getStatus,
+    setStatus,
 }
 
 export const authApi = {

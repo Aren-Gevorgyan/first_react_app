@@ -4,6 +4,7 @@ import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
 
 const DescriptionPerson = (props)=>{
+
    return( 
 
      <div className={style.container}>
@@ -27,7 +28,7 @@ const DescriptionPerson = (props)=>{
            </div>
         </div>
 
-        <MyStatus status="exir ankotrun"/>
+        <MyStatus status={props.status} upgradeStatus={props.upgradeStatus}/>
 
      </div> 
 

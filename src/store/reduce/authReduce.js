@@ -36,6 +36,7 @@ export const authThunk = () => {
             if (data.resultCode === 0) {
                 profileApi.getProfile(data.data.id)
                     .then(data => {
+                        alert(1);
                         dispatch(authProfileData(data));
                     })
 

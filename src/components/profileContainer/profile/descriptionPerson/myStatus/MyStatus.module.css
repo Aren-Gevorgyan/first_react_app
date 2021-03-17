@@ -1,11 +1,18 @@
 .container {
+    width: 20%;
     margin-left: 4px;
     margin-top: 4px;
+    display: flex;
+    align-items: center;
 }
 
 .container span {
+    width: 70%;
+    height: 13px;
+    padding: 2px;
     font-size: 10px;
     font-weight: bold;
+    border-bottom: 1px solid white;
 }
 
 .container input {

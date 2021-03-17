@@ -3,6 +3,7 @@ import { profileApi } from '../../dal/api';
 const ADD_POST = "ADD_POST";
 const SET_NEW_POST_TEXT = "SET_NEW_POST_TEXT";
 const PROFILE = "PROFILE";
+const SET_STATUS = "SET STATUS";
 
 const initialState = {
     arrayPosts: [
@@ -10,6 +11,7 @@ const initialState = {
         { id: 2, post: 'My second post', like: 2 },
         { id: 3, post: 'My third post', like: 7 },
     ],
+    status: null,
     profile: null,
     newPostText: "",
 }
@@ -34,16 +36,39 @@ const profileReduce = (state = initialState, action) => {
             };
         case PROFILE:
             return {...state, profile: action.profileData }
+        case SET_STATUS:
+            return {...state, status: action.status }
         default:
             return state;
     }
 }
 
+export default profileReduce;
+
 export const addPost = () => ({ type: ADD_POST });
 export const upgradePostText = (newText) => ({ type: SET_NEW_POST_TEXT, newText });
 const profileData = (profileData) => ({ type: PROFILE, profileData });
+const setStatus = (status) => ({ type: SET_STATUS, status });
 
-export default profileReduce;
+export const getStatusThunk = (userId, myId) => {
+
+    return (dispatch) => {
+        profileApi.getStatus(userId, myId).then(status => {
+            dispatch(setStatus(status))
+        })
+    }
+}
+
+export const setStatusThunk = (status) => {
+
+    return (dispatch) => {
+        profileApi.setStatus(status).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
+        })
+    }
+}
 
 export const getProfileThunk = (userId, myId) => {
     return (dispatch) => {

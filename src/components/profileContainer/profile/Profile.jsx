@@ -11,7 +11,7 @@ class Profile extends React.Component{
 
      <div className={style.container}>
   
-        <DescriptionPerson profile={this.props.profile}/> 
+        <DescriptionPerson profile={this.props.profile} status={this.props.status} upgradeStatus={this.props.setStatusThunk}/> 
         <MyPosts
           arrayPosts={this.props.arrayPosts}
           newPostText={this.props.newPostText}
