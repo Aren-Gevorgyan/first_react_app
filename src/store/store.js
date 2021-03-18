@@ -6,6 +6,7 @@ import authReduce from './reduce/authReduce';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import headerReduce from './reduce/headerReduce';
 import middleware from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
 
 const reducers = combineReducers({
     header: headerReduce,
@@ -14,6 +15,7 @@ const reducers = combineReducers({
     usersPage: usersReduce,
     navbar: navbarReduce,
     auth: authReduce,
+    form: formReducer,
 })
 
 const store = createStore(reducers, applyMiddleware(middleware));

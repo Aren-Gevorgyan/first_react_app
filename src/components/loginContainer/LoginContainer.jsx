@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './login/Login';
+import LoginForm from './login/Login';
 import {connect} from 'react-redux';
 
 class LoginContainer extends React.Component{
           
       render(){
-          return <Login {...this.props}/>
+          return <LoginForm {...this.props}/>
       }
 }
 
