@@ -5,7 +5,8 @@ import LoginForm from './loginForm/LoginForm';
 const Login = (props) => {
     
     const submit = (valuesForm) => {
-        console.log(valuesForm)
+        console.log(valuesForm.login, valuesForm.password, valuesForm.rememberMe)
+        props.loginThunk(valuesForm.login, valuesForm.password, valuesForm.rememberMe);
     }
 
     return (

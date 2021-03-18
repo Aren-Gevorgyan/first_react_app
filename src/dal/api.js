@@ -39,6 +39,14 @@ const setStatus = (status) => {
     return instanceAxios.put(`profile/status`, { status });
 }
 
+const login = (login, password, rememberMe) => {
+    return instanceAxios.post(`auth/login`, { email: login, password, rememberMe })
+}
+
+const logout = () => {
+    return instanceAxios.delete(`auth/login`)
+}
+
 export const userApi = {
     getUsers,
     followDelete,
@@ -54,4 +62,6 @@ export const profileApi = {
 
 export const authApi = {
     auth,
+    login,
+    logout,
 }

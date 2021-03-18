@@ -44,3 +44,12 @@ export const authThunk = () => {
         })
     }
 }
+
+export const loginThunk = (login, password, rememberMy) => {
+    return (dispatch) => {
+        authApi.login(login, password, rememberMy).then(response => {
+            console.log(response.data)
+            dispatch(setAuthData(response.data.data));
+        })
+    }
+}

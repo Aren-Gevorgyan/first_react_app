@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import App from './app/App';
 import {authThunk} from '../../store/reduce/authReduce';
+import { Redirect } from "react-router";
 
 class AppContainer extends React.Component{
     componentDidMount(){

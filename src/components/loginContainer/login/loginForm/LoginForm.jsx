@@ -9,18 +9,18 @@ const Form = (props) => {
           <form onSubmit={props.handleSubmit}>
               
                <div className={style.login}>
-                   <label for="login">Login</label>
-                   <Field id="login" component="input" type="text" name="login" placeholder="login"/>
+                   <label htmlFor="login">Login</label>
+                   <Form id="login" component="input" type="text" name="login" placeholder="login"/>
                </div>
 
                <div className={style.login}>
-                   <label for="password">Password</label>
-                   <Field id="password" component="input" type="password" name="password" placeholder="password"/>
+                   <label htmlFor="password">Password</label>
+                   <Form id="password" component="input" type="password" name="password" placeholder="password"/>
                </div>
 
                <div className={style.checkbox}>
-                   <label for="checkbox">Remember my</label>
-                   <Field id="checkbox" component="input" type="checkbox" name="rememberMy"/>
+                   <label htmlFor="checkbox">Remember my</label>
+                   <Form id="checkbox" component="input" type="checkbox" name="rememberMe"/>
                </div>
 
                <div className={style.submit}>
