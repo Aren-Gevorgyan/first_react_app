@@ -1,39 +1,39 @@
 import React from 'react';
 import style from './Header.module.css';
 import defaultAvatar from '../../../assets/images/default_avatar.png';
+import Dialog from './dialog/Dialog';
 
-const Header = (props)=>{
-   
-   let userPhoto;
+const Header = (props) => {
 
-   const ifPhotoEmpty = () => {
+   const ifPhotoEmpty = (props) => {
       if(props.profile.photos.large){
-         userPhoto =  props.profile.photos.large
+         return props.profile.photos.large
       }else{
-         userPhoto = defaultAvatar
+         return defaultAvatar
       }
    }
    
-   const ifProfileEmpty = (() => {
+   const userPhoto = ((props) => {
       if(props.profile){
-         ifPhotoEmpty();
+         return ifPhotoEmpty(props);
       }else{
-         userPhoto = defaultAvatar;  
+         return defaultAvatar;  
       } 
-   })();
-   
+   })(props);
+
    return( 
-      <header>
-         
-          <img src="https://www.pngitem.com/pimgs/m/98-980820_all-natural-100-vg-logo-hoja-hd-png.png" alt="logo"/>
-
-          <div className={style.userData}>
-             <img src={userPhoto} alt="userPhoto"/>
-             <h2>{!props.profile? "login" : props.profile.fullName}</h2>
-          </div>
-
-      </header>
+         <header>
+            
+             <img src="https://www.pngitem.com/pimgs/m/98-980820_all-natural-100-vg-logo-hoja-hd-png.png" alt="logo"/>
+   
+             <div className={style.userData}>
+                <img src={userPhoto} alt="userPhoto"/>
+                <Dialog  profile={props.profile} logout={props.logoutThunk}/>
+             </div>
+   
+         </header>
    )
+   
 }
 
 export default Header;

@@ -19,9 +19,3 @@ header img {
     display: flex;
     align-items: center;
 }
-
-.userData h2 {
-    font-size: 10px;
-    margin: 0px 10px;
-    color: white;
-}
