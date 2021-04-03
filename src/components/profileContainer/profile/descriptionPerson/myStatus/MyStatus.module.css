@@ -15,19 +15,6 @@
     border-bottom: 1px solid white;
 }
 
-.writeStatus {
-    display: flex;
-    justify-content: center;
-}
-
-.writeStatus textarea {
-    height: 16px;
-    font-size: 8px;
-    font-weight: bold;
-    border: none;
-    outline: none;
-}
-
 .container button {
     height: 16px;
     font-size: 8px;

@@ -14,9 +14,7 @@ const Messages = (props) => {
                {messages}
             </ul>
             <SetMessages
-              addMessages={props.addMessages}
-              upgradeMessagesText={props.upgradeMessagesText}
-              newMessageText={props.newMessageText}/>
+              addMessages={props.addMessages}/>
         </div>
     )
 }

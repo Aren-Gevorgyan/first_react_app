@@ -13,7 +13,6 @@ const initialState = {
         { id: 2, message: 'are you good?' },
         { id: 3, message: 'yes good' },
     ],
-    newMessageText: "",
 }
 
 const dialogReduce = (state = initialState, action) => {
@@ -22,24 +21,18 @@ const dialogReduce = (state = initialState, action) => {
         case ADD_MESSAGES:
             let newMessage = {
                 id: 5,
-                message: state.newMessageText,
+                message: action.newText,
             }
             return {
                 ...state,
                 arrayMessages: [...state.arrayMessages, newMessage],
-                newMessageText: ""
             }
-        case SET_NEW_MESSAGES_TEXT:
-            return {...state,
-                newMessageText: action.newText
-            };
         default:
             return state;
     }
 
 }
 
-export const addMessages = () => ({ type: ADD_MESSAGES });
-export const upgradeMessagesText = (newText) => ({ type: SET_NEW_MESSAGES_TEXT, newText });
+export const addMessages = (newText) => ({ type: ADD_MESSAGES, newText });
 
 export default dialogReduce;

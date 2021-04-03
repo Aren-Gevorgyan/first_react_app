@@ -1,4 +1,4 @@
-import {addMessages, upgradeMessagesText} from "../../store/reduce/dialogReduce";
+import {addMessages} from "../../store/reduce/dialogReduce";
 import Dialogs from './dialogs/Dialogs';
 import {connect} from 'react-redux';
 import React from 'react';
@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
     return {
        arrayPerson: state.dialogPage.arrayPerson,
        arrayMessages: state.dialogPage.arrayMessages,
-       newMessageText: state.dialogPage.newMessageText,
        ifAuth: state.auth.ifAuth,
     }
 }
@@ -34,5 +33,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     withRedirect,
-    connect(mapStateToProps, {addMessages, upgradeMessagesText}),
+    connect(mapStateToProps, {addMessages}),
 )(DialogsContainer);

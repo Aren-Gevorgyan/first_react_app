@@ -1,15 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import style from './MyStatus.module.css';
-
-const ReduxForm = (props) => {
-     return(
-        <form onSubmit={props.handleSubmit} className={style.writeStatus}>
-           <Field placeholder="write status" name="status" component="textarea"/>
-           <button type="submit">SetStatus</button>
-        </form>
-     )
-}
+import ReduxForm from '../../../../common/oneForm/ReduxForm';
 
 const AppendNewStatus = reduxForm({form: "status"})(ReduxForm);
 

@@ -1,23 +1,19 @@
 import React from 'react';
+import { reduxForm } from 'redux-form';
 import style from './SetMessages.module.css';
+import ReduxForm from '../../../../common/oneForm/ReduxForm';
+
+const WriteMessages = reduxForm({form: "messages"})(ReduxForm);
 
 const SetMessages = (props) => {
 
-    const bindTextarea = React.createRef();
-
-    const getValueMessage = () => {
-        props.addMessages();
-    }
-
-    const getPresentValue = () => {
-        let newText = bindTextarea.current.value;
-        props.upgradeMessagesText(newText);
+    const setNewMessages = (messagesText) => {
+        props.addMessages(messagesText.messages);           
     }
     
     return(
         <div className={style.container}>
-           <textarea onChange={getPresentValue} ref={bindTextarea} value={props.newMessageText}/>
-           <button onClick={getValueMessage}>Add Messages</button>    
+           <WriteMessages onSubmit={setNewMessages}/>  
         </div>
     )
 }
