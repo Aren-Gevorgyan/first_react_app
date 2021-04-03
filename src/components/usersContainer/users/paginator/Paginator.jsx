@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './Paginator.module.css';
-import * as axios from 'axios';
 import Loading from '../../../common/loading/Loading';
 
 const Paginator = (props) => {
@@ -25,13 +24,11 @@ const Paginator = (props) => {
 
       function disabledButton(props, pageFirst, pageSecond, totalCount) {
             const ifPageNumberLessOfOne = pageFirst <= 1;
-            const ifPageNumberMoreOfOne = totalCount <= pageSecond;
+            const ifNoPageNumber = totalCount <= pageSecond;
 
             if(ifPageNumberLessOfOne){ 
                props.setDisabledPrev(true);
-            }
-
-            if(ifPageNumberMoreOfOne){
+            }else if(ifNoPageNumber){
               props.setDisabledNext(true);
             }
       }

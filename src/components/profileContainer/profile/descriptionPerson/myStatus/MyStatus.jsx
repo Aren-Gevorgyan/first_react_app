@@ -1,11 +1,22 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import style from './MyStatus.module.css';
+
+const ReduxForm = (props) => {
+     return(
+        <form onSubmit={props.handleSubmit} className={style.writeStatus}>
+           <Field placeholder="write status" name="status" component="textarea"/>
+           <button type="submit">SetStatus</button>
+        </form>
+     )
+}
+
+const AppendNewStatus = reduxForm({form: "status"})(ReduxForm);
 
 class MyStatus extends React.Component{
 
     componentDidUpdate(prevProps, prevState){
           if(prevProps.status !== this.props.status){
-              console.log(prevProps.status);
               this.setState({
                      status: this.props.status
               })
@@ -14,16 +25,20 @@ class MyStatus extends React.Component{
 
     state = {
         editMode: true,
-        status: this.props.status
+        status: this.props.status,
     }
 
     editStatus = () => {
        this.setState({
            editMode: !this.state.editMode,
-       })
-       if(this.state.editMode === false){
-           this.props.upgradeStatus(this.state.status);
-       }
+       })   
+    }
+
+    writeNewStatus = (statusText) => {
+        if(this.state.editMode === false){
+            this.props.upgradeStatus(statusText.status);
+        }
+        this.editStatus();
     }
 
     getCurrentValue = (e) => {
@@ -37,10 +52,17 @@ class MyStatus extends React.Component{
             <div className={style.container}>
 
               {this.state.editMode?
-                 !this.state.status? <span>Write your status</span> : <span>{this.props.status}</span>:
-                 <input onChange={this.getCurrentValue} autoFocus={true} defaultValue={this.props.status}/>         
+                 !this.state.status? <div>
+                                        <span>Write your status</span> 
+                                        <button onClick={this.editStatus}>SetStatus</button>
+                                     </div>:
+
+                                     <div>
+                                        <span>{this.props.status}</span>
+                                        <button onClick={this.editStatus}>SetStatus</button>
+                                     </div> :
+                 <AppendNewStatus onSubmit={this.writeNewStatus}/>
               }          
-              <button onClick={this.editStatus}>SetStatus</button>
             </div>
         )
     }

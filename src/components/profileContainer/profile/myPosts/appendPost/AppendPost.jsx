@@ -1,17 +1,24 @@
 import React from 'react';
 import style from './AppendPost.module.css';
+import {Field, reduxForm} from 'redux-form';
+
+const ReduxForm = (props) => {
+    return (
+            <form onSubmit={props.handleSubmit} className={style.createNewPost}>
+               <Field component="textarea" name="newPost" placeholder="write post"/>
+               <div>
+                  <button type="submit">Add Posts</button>
+               </div>
+            </form>
+    )
+}
+
+const CreatePosts = reduxForm({form: "post"})(ReduxForm); 
 
 const AppendPosts = (props) => {
 
-    let bindTextarea = React.createRef();
-
-    const setPost = () => {
-          props.addPost()
-    }
-
-    const getPresentValue = () => {
-        let newText = bindTextarea.current.value;
-        props.upgradePostText(newText);
+    const addNewPost = (postValue) => {
+        props.addPost(postValue.newPost);
     }
 
     return(
@@ -21,12 +28,7 @@ const AppendPosts = (props) => {
               My Posts
            </div>
 
-           <div className={style.createNewPost}>
-               <textarea onChange={getPresentValue} ref={bindTextarea} value={props.newPostText}/>
-               <br/>
-               <button onClick={setPost}>Add Posts</button>
-            </div>
-
+           <CreatePosts onSubmit={addNewPost}/>
         </div>   
     )
 }

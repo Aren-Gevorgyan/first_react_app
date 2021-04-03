@@ -12,9 +12,7 @@ const MyPosts = (props) => {
         <div>
 
           <AppendPost        
-            addPost={props.addPost}
-            upgradePostText={props.upgradePostText}
-            newPostText={props.newPostText}/>
+            addPost={props.addPost}/>
 
           {post}
 

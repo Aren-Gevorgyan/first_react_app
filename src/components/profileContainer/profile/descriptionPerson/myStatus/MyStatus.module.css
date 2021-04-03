@@ -15,8 +15,13 @@
     border-bottom: 1px solid white;
 }
 
-.container input {
-    height: 13px;
+.writeStatus {
+    display: flex;
+    justify-content: center;
+}
+
+.writeStatus textarea {
+    height: 16px;
     font-size: 8px;
     font-weight: bold;
     border: none;
@@ -34,4 +39,5 @@
 
 .container button:hover {
     background-color: gray;
+    color: white;
 }

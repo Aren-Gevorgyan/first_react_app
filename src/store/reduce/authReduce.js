@@ -21,7 +21,7 @@ const authReduce = (state = initialState, action) => {
         case AUTH_PROFILE_DATA:
             return {...state, headerProfileData: action.profileData }
         case LOGOUT:
-            // return {...state, ifAuth: false }
+            return {...state, ifAuth: false }
         default:
             return state;
     }

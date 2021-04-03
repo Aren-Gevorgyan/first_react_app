@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
 import withRedirect from '../hoc/withRedirect';
 import { compose } from "redux";
-import {addPost, upgradePostText, getProfileThunk,
+import {addPost, getProfileThunk,
         getStatusThunk, setStatusThunk} from "../../store/reduce/profileReduce";
 
 class ProfileContainer extends React.Component{
@@ -24,7 +24,6 @@ class ProfileContainer extends React.Component{
 const mapStateToProps=(state)=>{
     return {
          arrayPosts: state.profilePage.arrayPosts,
-         newPostText: state.profilePage.newPostText,
          profile: state.profilePage.profile,
          fullName: state.profilePage.fullName,
          userId: state.auth.id,
@@ -44,6 +43,6 @@ const mapStateToProps=(state)=>{
 // }
  
 export default compose(
-    connect(mapStateToProps, {addPost, upgradePostText, getProfileThunk, getStatusThunk, setStatusThunk}),
+    connect(mapStateToProps, {addPost, getProfileThunk, getStatusThunk, setStatusThunk}),
     withRouter,
     withRedirect)(ProfileContainer);
