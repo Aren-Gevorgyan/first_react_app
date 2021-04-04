@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import style from './MyStatus.module.css';
-import ReduxForm from '../../../../common/oneForm/ReduxForm';
+import ReduxForm from '../../../../common/oneInput/ReduxForm';
 
 const AppendNewStatus = reduxForm({form: "status"})(ReduxForm);
 
@@ -51,7 +51,7 @@ class MyStatus extends React.Component{
 
                                      <div>
                                         <span>{this.props.status}</span>
-                                        <button onClick={this.editStatus}>SetStatus</button>
+                                        <button onClick={this.editStatus}>Set Status</button>
                                      </div> :
                  <AppendNewStatus onSubmit={this.writeNewStatus}/>
               }          

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import style from './SetMessages.module.css';
-import ReduxForm from '../../../../common/oneForm/ReduxForm';
+import ReduxForm from '../../../../common/oneInput/ReduxForm';
 
 const WriteMessages = reduxForm({form: "messages"})(ReduxForm);
 

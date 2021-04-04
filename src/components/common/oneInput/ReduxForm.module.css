@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    display: flex;
+}
+
+.container button {
+    height: 18px;
+    font-size: 8px;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    border-radius: 2px;
+    background-color: rgb(189, 185, 185);
+    border: 1px solid gray;
+}
+
+.container button:hover {
+    outline: none;
+    border: none;
+    background-color: gray;
+    color: white;
+}

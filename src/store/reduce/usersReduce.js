@@ -84,6 +84,7 @@ export const getUsersThunk = (currentPage, countUsers) => {
             })
     }
 }
+
 export const followThunk = (id, follow) => {
     return (dispatch) => {
         dispatch(setFollowDisabled(true, id));
