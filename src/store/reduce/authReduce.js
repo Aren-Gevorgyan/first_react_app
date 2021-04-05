@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { authApi } from '../../dal/api';
 import { profileApi } from '../../dal/api';
 
@@ -12,7 +13,6 @@ const initialState = {
     login: null,
     headerProfileData: null,
     ifAuth: false,
-    loginError: null,
 }
 
 const authReduce = (state = initialState, action) => {
@@ -24,8 +24,6 @@ const authReduce = (state = initialState, action) => {
             return {...state, headerProfileData: action.profileData }
         case LOGOUT:
             return {...state, ifAuth: false }
-        case LOGIN_ERROR:
-            return {...state, loginError: action.error }
         default:
             return state;
     }
@@ -37,7 +35,6 @@ export default authReduce;
 const setAuthData = (data) => ({ type: AUTH, data });
 const authProfileData = (profileData) => ({ type: AUTH_PROFILE_DATA, profileData });
 const logout = () => ({ type: LOGOUT });
-const loginError = (error) => ({ type: LOGIN_ERROR, error });
 
 export const authThunk = () => {
 
@@ -59,7 +56,8 @@ export const loginThunk = (login, password, rememberMy) => {
     return (dispatch) => {
         authApi.login(login, password, rememberMy).then(response => {
             if (response.data.resultCode === 1) {
-                dispatch(loginError(response.data.fieldsErrors[0].error));
+                console.log(response.data.fieldsErrors[0].error)
+                dispatch(stopSubmit('login', { _error: response.data.fieldsErrors[0].error }));
             } else {
                 dispatch(setAuthData(response.data.data));
             }

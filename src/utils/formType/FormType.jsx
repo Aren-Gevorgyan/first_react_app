@@ -13,6 +13,14 @@ export const Textarea = (props) => {
     )
 }
 
-// export const Input = (props) => {
-//     return <input {...props.input} {...props}/>
-// }
+export const Input = (props) => {
+
+    const ifSubmitFailed = props.meta.submitFailed;
+
+    return (
+        <div className={style.container} >
+            <input {...props.input} {...props} className={ ifSubmitFailed? style.error : {}}/>
+            <span>{ifSubmitFailed? props.meta.error : ""}</span>
+        </div>
+    )
+}

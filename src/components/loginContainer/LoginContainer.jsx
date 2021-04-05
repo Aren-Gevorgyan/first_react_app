@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
       return {
         ifAuth: state.auth.ifAuth,
         id: state.auth.id,
-        loginError: state.auth.loginError,      
       }
 }
 

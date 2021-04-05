@@ -11,7 +11,7 @@ const Login = (props) => {
     return (
         <div className={style.container}>
            <h1 className={style.title}>Login</h1>
-           <LoginForm onSubmit={submit} loginError={props.loginError}/>
+           <LoginForm onSubmit={submit} />
         </div>
     )
 }
