@@ -4,6 +4,7 @@ import { profileApi } from '../../dal/api';
 const AUTH = "AUTH";
 const AUTH_PROFILE_DATA = "PROFILE_DATA";
 const LOGOUT = "LOGOUT";
+const LOGIN_ERROR = "LOGIN ERROR";
 
 const initialState = {
     id: null,
@@ -11,6 +12,7 @@ const initialState = {
     login: null,
     headerProfileData: null,
     ifAuth: false,
+    loginError: null,
 }
 
 const authReduce = (state = initialState, action) => {
@@ -22,6 +24,8 @@ const authReduce = (state = initialState, action) => {
             return {...state, headerProfileData: action.profileData }
         case LOGOUT:
             return {...state, ifAuth: false }
+        case LOGIN_ERROR:
+            return {...state, loginError: action.error }
         default:
             return state;
     }
@@ -33,8 +37,10 @@ export default authReduce;
 const setAuthData = (data) => ({ type: AUTH, data });
 const authProfileData = (profileData) => ({ type: AUTH_PROFILE_DATA, profileData });
 const logout = () => ({ type: LOGOUT });
+const loginError = (error) => ({ type: LOGIN_ERROR, error });
 
 export const authThunk = () => {
+
     return (dispatch) => {
         authApi.auth().then(data => {
             if (data.resultCode === 0) {
@@ -52,8 +58,11 @@ export const authThunk = () => {
 export const loginThunk = (login, password, rememberMy) => {
     return (dispatch) => {
         authApi.login(login, password, rememberMy).then(response => {
-            console.log(response.data)
-            dispatch(setAuthData(response.data.data));
+            if (response.data.resultCode === 1) {
+                dispatch(loginError(response.data.fieldsErrors[0].error));
+            } else {
+                dispatch(setAuthData(response.data.data));
+            }
         })
     }
 }
