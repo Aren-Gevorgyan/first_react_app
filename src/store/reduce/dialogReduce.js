@@ -1,5 +1,4 @@
 const ADD_MESSAGES = "ADD_MESSAGES";
-const SET_NEW_MESSAGES_TEXT = "SET_NEW_MESSAGES_TEXT";
 
 const initialState = {
     arrayPerson: [
@@ -18,6 +17,7 @@ const initialState = {
 const dialogReduce = (state = initialState, action) => {
 
     switch (action.type) {
+
         case ADD_MESSAGES:
             let newMessage = {
                 id: 5,
@@ -27,6 +27,8 @@ const dialogReduce = (state = initialState, action) => {
                 ...state,
                 arrayMessages: [...state.arrayMessages, newMessage],
             }
+        case "SELECTOR":
+            return {...state }
         default:
             return state;
     }
