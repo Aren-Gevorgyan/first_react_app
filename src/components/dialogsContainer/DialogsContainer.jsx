@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import React from 'react';
 import withRedirect from '../hoc/withRedirect';
 import { compose } from "redux";
+import {getPerson, getMessages, ifAuth} from '../../store/reduce/dialog_selector';
 
 class DialogsContainer extends React.Component{
     render (){
@@ -13,9 +14,9 @@ class DialogsContainer extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-       arrayPerson: state.dialogPage.arrayPerson,
-       arrayMessages: state.dialogPage.arrayMessages,
-       ifAuth: state.auth.ifAuth,
+       arrayPerson: getPerson(state),
+       arrayMessages: getMessages(state),
+       ifAuth: ifAuth(state),
     }
 }
 
