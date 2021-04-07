@@ -9,7 +9,6 @@ const maxTextSize = getMaxTextSize(25);
 const Form = (props) => {
 
     const ifError = props.error? style.error: "";
-    console.log(props);
     
     return (
         <div  className={style.container}>

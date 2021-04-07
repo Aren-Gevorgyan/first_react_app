@@ -7,6 +7,7 @@ import withRedirect from '../hoc/withRedirect';
 import { compose } from "redux";
 import {addPost, getProfileThunk,
         getStatusThunk, setStatusThunk} from "../../store/reduce/profileReduce";
+import { getPosts, getProfile, getFullName, getUserId, getStatus} from '../../store/reduce/profile_selector';
 
 class ProfileContainer extends React.Component{
 
@@ -17,17 +18,18 @@ class ProfileContainer extends React.Component{
     }
 
     render(){
+        console.log(this.props.profile)
         return !this.props.profile?  <Loading/>  :  <Profile  {...this.props}/>         
     }
 }
 
 const mapStateToProps=(state)=>{
     return {
-         arrayPosts: state.profilePage.arrayPosts,
-         profile: state.profilePage.profile,
-         fullName: state.profilePage.fullName,
-         userId: state.auth.id,
-         status: state.profilePage.status,
+         arrayPosts: getPosts(state),
+         profile: getProfile(state),
+         fullName: getFullName(state),
+         userId: getUserId(state),
+         status: getStatus(state),
     }
 }
 

@@ -5,7 +5,6 @@ import { profileApi } from '../../dal/api';
 const AUTH = "AUTH";
 const AUTH_PROFILE_DATA = "PROFILE_DATA";
 const LOGOUT = "LOGOUT";
-const LOGIN_ERROR = "LOGIN ERROR";
 
 const initialState = {
     id: null,
@@ -23,18 +22,23 @@ const authReduce = (state = initialState, action) => {
         case AUTH_PROFILE_DATA:
             return {...state, headerProfileData: action.profileData }
         case LOGOUT:
-            return {...state, ifAuth: false }
+            return {...state,
+                id: action.deleteData,
+                email: action.deleteData,
+                login: action.deleteData,
+                headerProfileData: action.deleteData,
+                ifAuth: false
+            }
         default:
             return state;
     }
-
 }
 
 export default authReduce;
 
 const setAuthData = (data) => ({ type: AUTH, data });
 const authProfileData = (profileData) => ({ type: AUTH_PROFILE_DATA, profileData });
-const logout = () => ({ type: LOGOUT });
+const logout = (deleteData) => ({ type: LOGOUT, deleteData });
 
 export const authThunk = () => {
 
@@ -69,7 +73,7 @@ export const logoutThunk = () => {
     return (dispatch) => {
         authApi.logout().then(response => {
             if (response.data.resultCode === 0) {
-                dispatch(logout());
+                dispatch(logout(null));
             }
         })
     }

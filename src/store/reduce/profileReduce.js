@@ -66,5 +66,8 @@ export const getProfileThunk = (userId, myId) => {
             .then(data => {
                 dispatch(profileData(data));
             })
+            .catch(error => {
+                console.log(error);
+            })
     }
 }
