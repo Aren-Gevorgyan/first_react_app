@@ -3,7 +3,7 @@ import style from './MyPosts.module.css';
 import Posts from './posts/Posts';
 import AppendPost from './appendPost/AppendPost';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
     let post = props.arrayPosts
     .map(element =>  <Posts key={element.id} post={element.post} like={element.like}/>)
@@ -19,6 +19,6 @@ const MyPosts = (props) => {
         </div>
      
     )
-}
+})
 
 export default MyPosts;

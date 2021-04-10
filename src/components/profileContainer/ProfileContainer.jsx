@@ -1,6 +1,6 @@
 import Profile from './profile/Profile';
 import {connect} from 'react-redux';
-import React from 'react';
+import React, {PureComponent} from 'react';
 import { withRouter } from "react-router";
 import Loading from '../common/loading/Loading';
 import withRedirect from '../hoc/withRedirect';
@@ -9,7 +9,7 @@ import {addPost, getProfileThunk,
         getStatusThunk, setStatusThunk} from "../../store/reduce/profileReduce";
 import { getPosts, getProfile, getFullName, getUserId, getStatus} from '../../store/reduce/profile_selector';
 
-class ProfileContainer extends React.Component{
+class ProfileContainer extends PureComponent{
 
     componentDidMount(){
         let userId =  this.props.match.params.userId;
@@ -18,7 +18,6 @@ class ProfileContainer extends React.Component{
     }
 
     render(){
-        console.log(this.props.profile)
         return !this.props.profile?  <Loading/>  :  <Profile  {...this.props}/>         
     }
 }

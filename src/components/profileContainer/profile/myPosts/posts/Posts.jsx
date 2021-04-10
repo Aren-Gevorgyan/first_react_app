@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Posts.module.css';
 
-const Post = (props) => {
+const Post = React.memo((props) => {
     return(
         <div className={style.container}>
 
@@ -20,6 +20,6 @@ const Post = (props) => {
 
         </div>
     )
-}
+})
 
 export default Post;

@@ -5,7 +5,7 @@ import ReduxForm from '../../../../common/oneInput/ReduxForm';
 
 const CreatePosts = reduxForm({form: "post"})(ReduxForm); 
 
-const AppendPosts = (props) => {
+const AppendPosts = React.memo((props) => {
 
     const addNewPost = (postValue) => {
         props.addPost(postValue.newPost);
@@ -21,6 +21,6 @@ const AppendPosts = (props) => {
            <CreatePosts onSubmit={addNewPost}/>
         </div>   
     )
-}
+})
 
 export default AppendPosts;

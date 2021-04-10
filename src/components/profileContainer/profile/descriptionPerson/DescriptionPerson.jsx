@@ -3,7 +3,7 @@ import style from './DescriptionPerson.module.css';
 import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
 
-const DescriptionPerson = (props)=>{
+const DescriptionPerson = React.memo((props)=>{
 
    return( 
 
@@ -33,6 +33,6 @@ const DescriptionPerson = (props)=>{
      </div> 
 
    )
-}
+})
 
 export default DescriptionPerson;
