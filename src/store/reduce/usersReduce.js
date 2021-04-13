@@ -74,48 +74,44 @@ const setLoading = (loading) => ({ type: LOADING, loading });
 
 
 export const getUsersThunk = (currentPage, countUsers) => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(setLoading(true));
-        userApi.getUsers(currentPage, countUsers)
-            .then(data => {
-                dispatch(usersData(data.items));
-                dispatch(setTotalCount(data.totalCount));
-                dispatch(setLoading(false));
-            })
+        const data = await userApi.getUsers(currentPage, countUsers)
+        dispatch(usersData(data.items));
+        dispatch(setTotalCount(data.totalCount));
+        dispatch(setLoading(false));
     }
 }
 
 export const followThunk = (id, follow) => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(setFollowDisabled(true, id));
-        userApi.followed(id).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(following(!follow, id));
-                dispatch(setFollowDisabled(false, id));
-            }
-        })
+        const data = await userApi.followed(id)
+        if (data.resultCode === 0) {
+            dispatch(following(!follow, id));
+            dispatch(setFollowDisabled(false, id));
+        }
+
     }
 }
 
 export const unFollowThunk = (id, follow) => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(setFollowDisabled(true, id));
-        userApi.followDelete(id).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(following(!follow, id));
-                dispatch(setFollowDisabled(false, id));
-            }
-        })
+        const data = await userApi.followDelete(id)
+        if (data.resultCode === 0) {
+            dispatch(following(!follow, id));
+            dispatch(setFollowDisabled(false, id));
+        }
     }
 }
 
 export const getNewUsersThunk = (p, countUsers) => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch(setLoading(true));
-        userApi.getNewUsers(p, countUsers).then(response => {
-            dispatch(usersData(response.data.items));
-            dispatch(setLoading(false));
-        })
+        const response = await userApi.getNewUsers(p, countUsers)
+        dispatch(usersData(response.data.items));
+        dispatch(setLoading(false));
         dispatch(setCurrentPageNumber(p));
     }
 }

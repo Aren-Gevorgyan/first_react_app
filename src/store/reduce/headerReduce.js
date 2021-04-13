@@ -20,10 +20,8 @@ export default headerReduce;
 const authProfileData = (profileData) => ({ type: AUTH_PROFILE_DATA, profileData });
 
 export const authProfileThunk = (userId) => {
-    return (dispatch) => {
-        profileApi.getProfile(userId)
-            .then(data => {
-                dispatch(authProfileData(data));
-            })
+    return async(dispatch) => {
+        const data = await profileApi.getProfile(userId)
+        dispatch(authProfileData(data));
     }
 }

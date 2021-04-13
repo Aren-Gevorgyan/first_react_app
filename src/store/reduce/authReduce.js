@@ -42,39 +42,36 @@ const logout = (deleteData) => ({ type: LOGOUT, deleteData });
 
 export const authThunk = () => {
 
-    return (dispatch) => {
-        authApi.auth().then(data => {
-            if (data.resultCode === 0) {
-                profileApi.getProfile(data.data.id)
-                    .then(data => {
-                        dispatch(authProfileData(data));
-                    })
+    return async(dispatch) => {
+        const data = await authApi.auth()
+        if (data.resultCode === 0) {
+            profileApi.getProfile(data.data.id)
+                .then(data => {
+                    dispatch(authProfileData(data));
+                })
 
-                dispatch(setAuthData(data.data));
-            }
-        })
+            dispatch(setAuthData(data.data));
+        }
     }
 }
 
 export const loginThunk = (login, password, rememberMy) => {
-    return (dispatch) => {
-        authApi.login(login, password, rememberMy).then(response => {
-            if (response.data.resultCode === 1) {
-                console.log(response.data.fieldsErrors[0].error)
-                dispatch(stopSubmit('login', { _error: response.data.fieldsErrors[0].error }));
-            } else {
-                dispatch(setAuthData(response.data.data));
-            }
-        })
+    return async(dispatch) => {
+        const response = await authApi.login(login, password, rememberMy)
+        if (response.data.resultCode === 1) {
+            console.log(response.data.fieldsErrors[0].error)
+            dispatch(stopSubmit('login', { _error: response.data.fieldsErrors[0].error }));
+        } else {
+            dispatch(setAuthData(response.data.data));
+        }
     }
 }
 
 export const logoutThunk = () => {
-    return (dispatch) => {
-        authApi.logout().then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(logout(null));
-            }
-        })
+    return async(dispatch) => {
+        const response = await authApi.logout()
+        if (response.data.resultCode === 0) {
+            dispatch(logout(null));
+        }
     }
 }

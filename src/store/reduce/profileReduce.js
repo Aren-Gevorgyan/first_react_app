@@ -22,7 +22,6 @@ const profileReduce = (state = initialState, action) => {
                 post: action.newPost,
                 like: 0
             }
-            console.log(newPost);
             return {
                 ...state,
                 arrayPosts: [...state.arrayPosts, newPost],
@@ -44,31 +43,25 @@ const profileData = (profileData) => ({ type: PROFILE, profileData });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 
 export const getStatusThunk = (userId, myId) => {
-    return (dispatch) => {
-        profileApi.getStatus(userId, myId).then(status => {
-            dispatch(setStatus(status))
-        })
+    return async(dispatch) => {
+        const status = await profileApi.getStatus(userId, myId);
+        dispatch(setStatus(status))
     }
 }
 
 export const setStatusThunk = (status) => {
-    return (dispatch) => {
-        profileApi.setStatus(status).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        })
+    return async(dispatch) => {
+        const response = await profileApi.setStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
     }
 }
 
 export const getProfileThunk = (userId, myId) => {
-    return (dispatch) => {
-        profileApi.getProfile(userId ? userId : myId)
-            .then(data => {
-                dispatch(profileData(data));
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    return async(dispatch) => {
+        const data = await profileApi.getProfile(userId ? userId : myId)
+        dispatch(profileData(data));
+
     }
 }
