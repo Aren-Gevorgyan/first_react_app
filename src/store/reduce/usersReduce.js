@@ -1,15 +1,15 @@
 import { userApi } from '../../dal/api';
 
 
-const FOLLOW = "FOLLOW";
-const SET_USERS = "SET USERS";
-const TOTAL_COUNT = "TOTAL COUNT";
-const CURRENT_PAGE_NUMBER = "CURRENT PAGE NUMBER";
-const NEW_PAGE_NUMBER = "NEW PAGE NUMBER";
-const DISABLED_NEXT = "DISABLED NEXT";
-const DISABLED_PREV = "DISABLED PREV";
-const LOADING = "LOADING";
-const FOLLOW_DISABLED = "FOLLOW DISABLED";
+const FOLLOW = "users/FOLLOW";
+const SET_USERS = "users/SET USERS";
+const TOTAL_COUNT = "users/TOTAL COUNT";
+const CURRENT_PAGE_NUMBER = "users/CURRENT PAGE NUMBER";
+const NEW_PAGE_NUMBER = "users/NEW PAGE NUMBER";
+const DISABLED_NEXT = "users/DISABLED NEXT";
+const DISABLED_PREV = "users/DISABLED PREV";
+const LOADING = "users/LOADING";
+const FOLLOW_DISABLED = "users/FOLLOW DISABLED";
 
 const initialState = {
     arrayUsers: [],

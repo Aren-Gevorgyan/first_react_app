@@ -1,6 +1,6 @@
 import { profileApi } from '../../dal/api';
 
-const AUTH_PROFILE_DATA = "PROFILE_DATA";
+const AUTH_PROFILE_DATA = "header/PROFILE_DATA";
 
 const initialState = {
     headerProfileData: null,

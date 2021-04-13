@@ -1,8 +1,8 @@
 import { profileApi } from '../../dal/api';
 
-const ADD_POST = "ADD_POST";
-const PROFILE = "PROFILE";
-const SET_STATUS = "SET STATUS";
+const ADD_POST = "profile/ADD_POST";
+const PROFILE = "profile/PROFILE";
+const SET_STATUS = "profile/SET STATUS";
 
 const initialState = {
     arrayPosts: [
@@ -22,6 +22,7 @@ const profileReduce = (state = initialState, action) => {
                 post: action.newPost,
                 like: 0
             }
+            console.log(newPost);
             return {
                 ...state,
                 arrayPosts: [...state.arrayPosts, newPost],

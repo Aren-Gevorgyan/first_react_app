@@ -2,9 +2,9 @@ import { stopSubmit } from 'redux-form';
 import { authApi } from '../../dal/api';
 import { profileApi } from '../../dal/api';
 
-const AUTH = "AUTH";
-const AUTH_PROFILE_DATA = "PROFILE_DATA";
-const LOGOUT = "LOGOUT";
+const AUTH = "auth/AUTH";
+const AUTH_PROFILE_DATA = "auth/PROFILE_DATA";
+const LOGOUT = "auth/LOGOUT";
 
 const initialState = {
     id: null,
