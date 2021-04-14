@@ -43,6 +43,12 @@ const login = (login, password, rememberMe) => {
     return instanceAxios.post(`auth/login`, { email: login, password, rememberMe })
 }
 
+const upgradePhoto = (photo) => {
+    const formData = new FormData();
+    formData.append("image", photo);
+    return instanceAxios.put(`profile/photo`, formData, { headers: { "Content-Type": "multipart/form-data" } })
+}
+
 const logout = () => {
     return instanceAxios.delete(`auth/login`)
 }
@@ -58,6 +64,7 @@ export const profileApi = {
     getProfile,
     getStatus,
     setStatus,
+    upgradePhoto,
 }
 
 export const authApi = {

@@ -3,6 +3,7 @@ import { profileApi } from '../../dal/api';
 const ADD_POST = "profile/ADD_POST";
 const PROFILE = "profile/PROFILE";
 const SET_STATUS = "profile/SET STATUS";
+const UPGRADE_PHOTO = "profile/UPGRADE_PHOTO";
 
 const initialState = {
     arrayPosts: [
@@ -29,6 +30,8 @@ const profileReduce = (state = initialState, action) => {
             };
         case PROFILE:
             return {...state, profile: action.profileData }
+        case UPGRADE_PHOTO:
+            return {...state, profile: {...state.profile, photos: action.photo } }
         case SET_STATUS:
             return {...state, status: action.status }
         default:
@@ -41,6 +44,7 @@ export default profileReduce;
 export const addPost = (newPost) => ({ type: ADD_POST, newPost });
 const profileData = (profileData) => ({ type: PROFILE, profileData });
 const setStatus = (status) => ({ type: SET_STATUS, status });
+const upgradePhotoAction = (photo) => ({ type: UPGRADE_PHOTO, photo });
 
 export const getStatusThunk = (userId, myId) => {
     return async(dispatch) => {
@@ -63,5 +67,12 @@ export const getProfileThunk = (userId, myId) => {
         const data = await profileApi.getProfile(userId ? userId : myId)
         dispatch(profileData(data));
 
+    }
+}
+
+export const upgradePhoto = (photo) => {
+    return async(dispatch) => {
+        const response = await profileApi.upgradePhoto(photo);
+        dispatch(upgradePhotoAction(response.data.data.photos));
     }
 }

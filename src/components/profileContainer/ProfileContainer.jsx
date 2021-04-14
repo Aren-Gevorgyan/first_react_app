@@ -6,7 +6,7 @@ import Loading from '../common/loading/Loading';
 import withRedirect from '../hoc/withRedirect';
 import { compose } from "redux";
 import {addPost, getProfileThunk,
-        getStatusThunk, setStatusThunk} from "../../store/reduce/profileReduce";
+        getStatusThunk, setStatusThunk, upgradePhoto} from "../../store/reduce/profileReduce";
 import { getPosts, getProfile, getFullName, getUserId, getStatus} from '../../store/reduce/profile_selector';
 
 class ProfileContainer extends PureComponent{
@@ -44,6 +44,6 @@ const mapStateToProps=(state)=>{
 // }
  
 export default compose(
-    connect(mapStateToProps, {addPost, getProfileThunk, getStatusThunk, setStatusThunk}),
+    connect(mapStateToProps, {addPost, getProfileThunk, getStatusThunk, setStatusThunk, upgradePhoto}),
     withRouter,
     withRedirect)(ProfileContainer);

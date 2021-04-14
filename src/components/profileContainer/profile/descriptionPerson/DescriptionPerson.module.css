@@ -37,3 +37,10 @@
     height: 60px;
     border-radius: 50%;
 }
+
+input[type="file"] {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 8px;
+    border: none;
+}

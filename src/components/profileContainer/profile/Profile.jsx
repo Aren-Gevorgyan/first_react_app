@@ -10,7 +10,8 @@ class Profile extends PureComponent{
 
      <div className={style.container}>
   
-        <DescriptionPerson profile={this.props.profile} status={this.props.status} upgradeStatus={this.props.setStatusThunk}/> 
+        <DescriptionPerson profile={this.props.profile} status={this.props.status}
+                           upgradeStatus={this.props.setStatusThunk} upgradePhoto={this.props.upgradePhoto}/> 
         <MyPosts
           arrayPosts={this.props.arrayPosts}
           addPost={this.props.addPost}/>

@@ -3,7 +3,11 @@ import style from './DescriptionPerson.module.css';
 import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
 
-const DescriptionPerson = React.memo((props)=>{
+const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto})=>{
+
+   const getPhotoPath = (e) => {
+        upgradePhoto(e.target.files[0]);
+   }
 
    return( 
 
@@ -15,20 +19,24 @@ const DescriptionPerson = React.memo((props)=>{
 
         <div className={style.description}>
 
-           <img src={!props.profile.photos.large? defaultAvatar:props.profile.photos.large} className={style.avatar} alt="avatar"/>
+           <img src={!profile.photos.large? defaultAvatar:profile.photos.large} className={style.avatar} alt="avatar"/>
            
            <div className={style.aboutMy}>
-              <h2>{props.profile.fullName}</h2>
+              <h2>{profile.fullName}</h2>
               <dl>
                  <dt>Contacts</dt>
-                 <dd>{props.profile.contacts.facebook}</dd>
-                 <dd>{props.profile.contacts.github}</dd>
-                 <dd>{props.profile.contacts.vk}</dd>
+                 <dd>{profile.contacts.facebook}</dd>
+                 <dd>{profile.contacts.github}</dd>
+                 <dd>{profile.contacts.vk}</dd>
               </dl>
            </div>
         </div>
 
-        <MyStatus status={props.status} upgradeStatus={props.upgradeStatus}/>
+        <div className="setPhoto">
+           <input type="file" onChange={getPhotoPath}/>
+        </div>
+
+        <MyStatus status={status} upgradeStatus={upgradeStatus}/>
 
      </div> 
 
