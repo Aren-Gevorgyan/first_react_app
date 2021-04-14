@@ -11,14 +11,25 @@ import { getPosts, getProfile, getFullName, getUserId, getStatus} from '../../st
 
 class ProfileContainer extends PureComponent{
 
-    componentDidMount(){
+    getProfile(){
         let userId =  this.props.match.params.userId;
         this.props.getProfileThunk(userId, this.props.userId);
         this.props.getStatusThunk(userId, this.props.userId);
     }
 
+    componentDidMount(){
+       this.getProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState){
+      
+        if(prevProps.match.params.userId !== this.props.match.params.userId){
+          this.getProfile();
+        }
+    }
+
     render(){
-        return !this.props.profile?  <Loading/>  :  <Profile  {...this.props}/>         
+        return !this.props.profile?  <Loading/>  :  <Profile  {...this.props} pathUserId={this.props.match.params.userId}/>         
     }
 }
 

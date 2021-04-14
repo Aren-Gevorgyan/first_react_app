@@ -3,11 +3,13 @@ import style from './DescriptionPerson.module.css';
 import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
 
-const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto})=>{
+const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto, pathUserId, userId})=>{
 
    const getPhotoPath = (e) => {
         upgradePhoto(e.target.files[0]);
    }
+
+   const ifMyProfile = parseInt(pathUserId) === userId || pathUserId === undefined;
 
    return( 
 
@@ -33,7 +35,7 @@ const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePh
         </div>
 
         <div className="setPhoto">
-           <input type="file" onChange={getPhotoPath}/>
+           {ifMyProfile? <input type="file" onChange={getPhotoPath}/>: " "}
         </div>
 
         <MyStatus status={status} upgradeStatus={upgradeStatus}/>
