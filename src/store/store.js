@@ -4,12 +4,10 @@ import navbarReduce from './reduce/navbarReduce';
 import usersReduce from './reduce/usersReduce';
 import authReduce from './reduce/authReduce';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import headerReduce from './reduce/headerReduce';
 import middleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 const reducers = combineReducers({
-    header: headerReduce,
     profilePage: profileReduce,
     dialogPage: dialogReduce,
     usersPage: usersReduce,
