@@ -1,9 +1,9 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import style from './Profile.module.css';
 import MyPosts from './myPosts/MyPosts';
 import DescriptionPerson from './descriptionPerson/DescriptionPerson';
 
-class Profile extends PureComponent{
+class Profile extends React.Component{
 
   render(){
    return (

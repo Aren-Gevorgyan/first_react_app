@@ -2,6 +2,7 @@ import React from 'react';
 import DialogsItem from './dialogsItem/DialogsItem';
 import style from './DialogsPerson.module.css';
 
+//React.memo wear props in case of change
 const DialogsPerson = React.memo((props) => {
 
     let dialogsItem = props.person

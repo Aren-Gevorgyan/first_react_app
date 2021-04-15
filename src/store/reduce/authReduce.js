@@ -44,12 +44,10 @@ export const authThunk = () => {
 
     return async(dispatch) => {
         const data = await authApi.auth()
-        if (data.resultCode === 0) {
-            profileApi.getProfile(data.data.id)
-                .then(data => {
-                    dispatch(authProfileData(data));
-                })
 
+        if (data.resultCode === 0) {
+            const response = await profileApi.getProfile(data.data.id);
+            dispatch(authProfileData(response));
             dispatch(setAuthData(data.data));
         }
     }
@@ -59,7 +57,6 @@ export const loginThunk = (login, password, rememberMy) => {
     return async(dispatch) => {
         const response = await authApi.login(login, password, rememberMy)
         if (response.data.resultCode === 1) {
-            console.log(response.data.fieldsErrors[0].error)
             dispatch(stopSubmit('login', { _error: response.data.fieldsErrors[0].error }));
         } else {
             dispatch(setAuthData(response.data.data));

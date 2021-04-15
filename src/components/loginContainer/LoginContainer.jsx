@@ -8,7 +8,7 @@ class LoginContainer extends React.Component{
           
       render(){
          return this.props.ifAuth?
-           <Redirect to={`profile/${this.props.id}`}/>
+           <Redirect to={`profile`}/>
           : 
            <LoginForm {...this.props}/>
       }
