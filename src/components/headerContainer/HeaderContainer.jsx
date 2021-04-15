@@ -7,7 +7,6 @@ import {logoutThunk} from '../../store/reduce/authReduce';
 class HeaderContainer extends PureComponent{
     
     render(){
-        debugger
         return <Header {...this.props}/>;
     }
 }

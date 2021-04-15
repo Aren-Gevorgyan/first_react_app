@@ -7,8 +7,8 @@ const AUTH_PROFILE_DATA = "auth/PROFILE_DATA";
 const LOGOUT = "auth/LOGOUT";
 
 const initialState = {
-    id: null,
     email: null,
+    id: null,
     login: null,
     headerProfileData: null,
     ifAuth: false,
@@ -43,8 +43,7 @@ const logout = (deleteData) => ({ type: LOGOUT, deleteData });
 export const authThunk = () => {
 
     return async(dispatch) => {
-        const data = await authApi.auth()
-
+        const data = await authApi.auth();
         if (data.resultCode === 0) {
             const response = await profileApi.getProfile(data.data.id);
             dispatch(authProfileData(response));

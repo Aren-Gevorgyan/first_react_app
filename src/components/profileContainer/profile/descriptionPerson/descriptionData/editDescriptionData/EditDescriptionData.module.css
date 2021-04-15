@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.container div label {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.container div label textarea {
+    width: 50%;
+    height: 24px;
+    font-size: 10px;
+}
+
+.container div label input {
+    width: 4%;
+    margin-left: 10px;
+}

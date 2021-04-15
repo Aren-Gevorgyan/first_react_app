@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+}
+
+.container button {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.aboutMy {
+    width: 100%;
+    margin-left: 1%;
+    background-color: white;
+}
+
+.aboutMy div {
+    margin: 5px;
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.aboutMy div span {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.aboutMy dl dt {
+    margin-top: 4px;
+    font-weight: bold;
+    font-size: 8px;
+}
+
+.aboutMy dl dd {
+    font-weight: bold;
+    font-size: 6px;
+}

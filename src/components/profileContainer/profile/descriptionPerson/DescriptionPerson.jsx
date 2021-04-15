@@ -2,9 +2,10 @@ import React from 'react';
 import style from './DescriptionPerson.module.css';
 import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
+import DescriptionData from './descriptionData/DescriptionData'
 
 const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto, pathUserId, userId})=>{
-
+   debugger
    const getPhotoPath = (e) => {
         upgradePhoto(e.target.files[0]);
    }
@@ -22,16 +23,10 @@ const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePh
         <div className={style.description}>
 
            <img src={!profile.photos.large? defaultAvatar:profile.photos.large} className={style.avatar} alt="avatar"/>
+           <h2>{profile.fullName}</h2>
            
-           <div className={style.aboutMy}>
-              <h2>{profile.fullName}</h2>
-              <dl>
-                 <dt>Contacts</dt>
-                 <dd>{profile.contacts.facebook}</dd>
-                 <dd>{profile.contacts.github}</dd>
-                 <dd>{profile.contacts.vk}</dd>
-              </dl>
-           </div>
+           <DescriptionData profile={profile}/>
+
         </div>
 
         <div className="setPhoto">

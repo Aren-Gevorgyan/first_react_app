@@ -64,7 +64,8 @@ export const setStatusThunk = (status) => {
 
 export const getProfileThunk = (userId, myId) => {
     return async(dispatch) => {
-        const data = await profileApi.getProfile(userId ? userId : myId)
+        const data = await profileApi.getProfile(userId ? userId : myId);
+        debugger
         dispatch(profileData(data));
 
     }

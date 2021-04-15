@@ -4,7 +4,6 @@ import style from './FormType.module.css';
 export const Textarea = (props) => {
 
     const ifSubmitFailed = props.meta.submitFailed;
-
     return (
         <div className={style.container} >
             <textarea {...props.input} {...props} className={ ifSubmitFailed? style.error : {}}/>
@@ -16,7 +15,7 @@ export const Textarea = (props) => {
 export const Input = (props) => {
 
     const ifSubmitFailed = props.meta.submitFailed;
-
+     
     return (
         <div className={style.container} >
             <input {...props.input} {...props} className={ ifSubmitFailed? style.error : {}}/>

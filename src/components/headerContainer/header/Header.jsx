@@ -4,7 +4,6 @@ import defaultAvatar from '../../../assets/images/default_avatar.png';
 import Dialog from './dialog/Dialog';
 
 const Header = (props) => {
-   debugger
 
    const ifPhotoEmpty = (props) => {
       if(props.profile.photos.large){

@@ -10,7 +10,6 @@ class AppContainer extends React.Component{
     }
 
     render(){
-        debugger
         return <App {...this.props}/>
     }
 }
