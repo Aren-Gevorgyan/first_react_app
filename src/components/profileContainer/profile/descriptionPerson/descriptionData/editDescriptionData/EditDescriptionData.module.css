@@ -1,22 +1,32 @@
 .container {
     width: 100%;
     margin-top: 10px;
-    background-color: white;
+}
+
+.containerInput {
+    width: 90%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid gray;
 }
 
 .container div label {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     font-family: monospace;
 }
 
 .container div label textarea {
     width: 50%;
-    height: 24px;
+    height: 18px;
     font-size: 10px;
 }
 
 .container div label input {
-    width: 4%;
+    font-size: 10px;
+    height: 18px;
+}
+
+input[name="lookingForAJob"] {
     margin-left: 10px;
 }

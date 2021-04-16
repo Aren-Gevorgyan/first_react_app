@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import style from './DescriptionData.module.css';
 import EditDescriptionData from './editDescriptionData/EditDescriptionData';
 
-const DescriptionData = React.memo(({profile})=>{
+const DescriptionData = React.memo(({profile, upgradeProfile})=>{
    const [edit, setEdit] = useState(false);
 
    const submit = (valuesForm) => {
-      console.log(valuesForm)
+      upgradeProfile(valuesForm);
+      setEdit(!edit);
    } 
 
    return( 
@@ -16,18 +17,20 @@ const DescriptionData = React.memo(({profile})=>{
 
            {edit? <EditDescriptionData onSubmit={submit} edit={edit} setEdit={setEdit} />: 
 
-           <div className={style.aboutMy}>
+           <div className={style.aboutMe}>
         
-              <div><span>AboutMy</span><p>{profile.aboutMy}null</p></div>
-              <div><span>Looking for a job</span><p>{profile.lookingForAJob}null</p></div>
-              <div><span>Looking for a job description</span><p>{profile.lookingForAJobDescription}null</p></div>
-
-              <dl>
+              <div className={style.descriptionItems}><span>AboutMe</span><p>{profile.aboutMe}</p></div>
+               
+              <dl className={style.descriptionItems}>
                  <dt>Contacts</dt>
-                 <dd>{profile.contacts.facebook}null</dd>
-                 <dd>{profile.contacts.github}null</dd>
-                 <dd>{profile.contacts.vk}null</dd>
+                 <dd>Facebook: {profile.contacts.facebook}null</dd>
+                 <dd>Github: {profile.contacts.github}null</dd>
+                 <dd>Vk: {profile.contacts.vk}null</dd>
               </dl>
+
+              <div className={style.descriptionItems}><span>FullName</span><p>{profile.fullName}</p></div>
+              <div className={style.descriptionItems}><span>Looking for a job</span><p>{profile.lookingForAJob}</p></div>
+              <div className={style.descriptionItems}><span>Looking for a job description</span><p>{profile.lookingForAJobDescription}</p></div>
            </div>
 
            }

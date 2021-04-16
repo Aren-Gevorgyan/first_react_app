@@ -65,7 +65,6 @@ export const setStatusThunk = (status) => {
 export const getProfileThunk = (userId, myId) => {
     return async(dispatch) => {
         const data = await profileApi.getProfile(userId ? userId : myId);
-        debugger
         dispatch(profileData(data));
 
     }
@@ -75,5 +74,16 @@ export const upgradePhoto = (photo) => {
     return async(dispatch) => {
         const response = await profileApi.upgradePhoto(photo);
         dispatch(upgradePhotoAction(response.data.data.photos));
+    }
+}
+
+export const upgradeProfile = (aboutMe) => {
+    return async(dispatch, getState) => {
+        const getMyId = getState().auth.id;
+        const response = await profileApi.upgradeProfile(aboutMe);
+        if (response.resultCode === 0) {
+            const data = await profileApi.getProfile(getMyId);
+            dispatch(profileData(data));
+        }
     }
 }

@@ -14,6 +14,10 @@ const getProfile = (userId) => {
     return instanceAxios.get(`profile/${userId}`).then(response => response.data)
 }
 
+const upgradeProfile = (aboutMy) => {
+    return instanceAxios.put(`profile`, aboutMy).then(response => response.data)
+}
+
 const getUsers = (currentPage, countUsers) => {
     return instanceAxios.get(`users?page=${currentPage}&count=${countUsers}`).then(response => response.data)
 }
@@ -65,6 +69,7 @@ export const profileApi = {
     getStatus,
     setStatus,
     upgradePhoto,
+    upgradeProfile,
 }
 
 export const authApi = {

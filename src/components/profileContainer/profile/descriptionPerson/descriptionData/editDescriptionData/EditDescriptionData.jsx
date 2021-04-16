@@ -2,35 +2,42 @@ import React from 'react';
 import style from './EditDescriptionData.module.css';
 import { Field, reduxForm } from 'redux-form';
 
-const Form = ({handleSubmit, setEdit, edit}) => {
+const Form = ({handleSubmit}) => {
 
    return( 
         <form onSubmit={handleSubmit} className={style.container}>
             
-            <div>
-                <label>About My
+            <div className={style.containerInput}>
+                <label>About Me
                     <div>
-                       <Field name="aboutMy" placeholder={"about my"} component='textarea'/>
+                       <Field name="aboutMe" placeholder={"about me"} component='textarea'/>
                     </div>
                 </label>
             </div>
 
-            <div>
-                <label>
-                    Looking for a job
+            <div className={style.containerInput}>
+                <label>Full Name
+                    <div>
+                       <Field name="fullName" placeholder={"full name"} component='input'/>
+                    </div>
+                </label>
+            </div>
+
+            <div className={style.containerInput}>
+                <label>Looking for a job
                     <Field name="lookingForAJob" placeholder={"Looking for a job"} type="checkbox" component='input'/>
                 </label>
             </div>
 
-            <div>
+            <div className={style.containerInput}>
                 <label>Looking for a job description
                     <div>
-                       <Field name="LookingForAJobDescription" placeholder={"Looking for a job description"} component='textarea'/>
+                       <Field name="lookingForAJobDescription" placeholder={"Looking for a job description"} component='textarea'/>
                     </div>
                 </label>
             </div>
 
-            <button type='submit' onClick={()=>{setEdit(!edit)}}>Save</button>
+            <button type='submit'>Save</button>
         </form>
    )
 }

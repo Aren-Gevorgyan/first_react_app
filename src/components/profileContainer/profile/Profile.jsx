@@ -12,7 +12,7 @@ class Profile extends React.Component{
   
         <DescriptionPerson profile={this.props.profile} status={this.props.status}
                            upgradeStatus={this.props.setStatusThunk} upgradePhoto={this.props.upgradePhoto}
-                           pathUserId={this.props.pathUserId} userId={this.props.userId}/> 
+                           pathUserId={this.props.pathUserId} userId={this.props.userId} upgradeProfile={this.props.upgradeProfile}/> 
         <MyPosts
           arrayPosts={this.props.arrayPosts}
           addPost={this.props.addPost}/>

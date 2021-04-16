@@ -4,8 +4,8 @@ import defaultAvatar from '../../../../assets/images/default_avatar.png';
 import MyStatus from './myStatus/MyStatus';
 import DescriptionData from './descriptionData/DescriptionData'
 
-const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto, pathUserId, userId})=>{
-   debugger
+const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePhoto, pathUserId, userId, upgradeProfile})=>{
+
    const getPhotoPath = (e) => {
         upgradePhoto(e.target.files[0]);
    }
@@ -25,7 +25,7 @@ const DescriptionPerson = React.memo(({profile, status, upgradeStatus, upgradePh
            <img src={!profile.photos.large? defaultAvatar:profile.photos.large} className={style.avatar} alt="avatar"/>
            <h2>{profile.fullName}</h2>
            
-           <DescriptionData profile={profile}/>
+           <DescriptionData profile={profile} upgradeProfile={upgradeProfile}/>
 
         </div>
 

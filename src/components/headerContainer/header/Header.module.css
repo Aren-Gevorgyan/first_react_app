@@ -16,6 +16,7 @@ header img {
 }
 
 .userData {
+    width: 12%;
     display: flex;
     align-items: center;
 }

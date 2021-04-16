@@ -1,38 +1,48 @@
 .container {
     width: 100%;
+    background-color: white;
 }
 
 .container button {
     font-size: 10px;
     font-weight: bold;
+    margin: 5px;
     font-family: monospace;
 }
 
-.aboutMy {
-    width: 100%;
-    margin-left: 1%;
-    background-color: white;
+.descriptionItems {
+    width: 50%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
 }
 
-.aboutMy div {
+.aboutMe {
+    width: 100%;
+    margin-left: 1%;
+}
+
+.aboutMe div {
     margin: 5px;
     font-family: monospace;
     font-size: 10px;
 }
 
-.aboutMy div span {
+.aboutMe div span {
     font-weight: bold;
     font-family: monospace;
     font-size: 10px;
 }
 
-.aboutMy dl dt {
-    margin-top: 4px;
+.aboutMe dl dt {
+    margin: 5px;
     font-weight: bold;
-    font-size: 8px;
+    font-size: 10px;
 }
 
-.aboutMy dl dd {
+.aboutMe dl dd {
+    margin-left: 10px;
     font-weight: bold;
-    font-size: 6px;
+    font-size: 8px;
+    font-family: monospace;
+    color: rgb(44, 44, 44);
 }
